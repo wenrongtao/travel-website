@@ -3,20 +3,25 @@
     <div class="lg-box">
       <!-- 头像区域 -->
       <div class="avator_box">
-        <img src="../assets/images/hai.jpg" alt="">
+        <img :src="imgLg" alt="">
       </div>
       <!-- 登录表单区域 -->
-      <el-form  ref="loginFormRef" class="login_form" :model='loginForm' :rules="loginFormRules">
+      <el-form  class="login_form" >
         <el-form-item  prop="username">
-          <el-input v-focus prefix-icon="el-icon-user-solid" v-model="loginForm.username"></el-input>
+          <el-input prefix-icon="el-icon-user-solid" placeholder="请输入用户名"></el-input>
         </el-form-item>
         <el-form-item prop="password">
           <!-- 在element-ui组件库中，输入框可以使用type进行修改 -->
-          <el-input prefix-icon="el-icon-unlock" v-model="loginForm.password" type='password'></el-input>
+          <el-input prefix-icon="el-icon-unlock"  type='password' placeholder="请输入密码"></el-input>
         </el-form-item >
         <el-form-item class="btns" >
-          <el-button type="primary" @click="login">登录</el-button>
-          <el-button type="info" @click="resetForm('loginFormRef')">重置</el-button>
+          <el-button type="primary" round>登录</el-button>
+          <el-button type="success" round>重置</el-button>
+        </el-form-item>
+        <el-form-item>
+          <p>其它登录方式</p>
+          <el-button type="primary" class="changew"><img :src="imgqq">QQ登录</el-button>
+          <el-button type="danger" class="changew"><img :src="imgwei">微信登录</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -28,62 +33,23 @@
     name: '',
     data () {
       return {
-        //这是登录表单的数据绑定对象
-        loginForm: {
-          username:'admin',
-          password: '123456'
-        },
-        //表单的验证规则对象
-        loginFormRules: {
-          username: [
-            { required: true, message: '请输入登录名称', trigger: 'blur' },
-            { min: 2, max: 10, message: '长度在 2 到 10 个字符', trigger: 'blur' }
-          ],
-          password: [
-            { required: true, message: '请输入登录密码', trigger: 'blur' },
-            { min: 5, max: 12, message: '长度在 5 到 10 个字符', trigger: 'blur' }
-          ]
-        }
+        imgLg: require('../assets/images/travel1.jpg'),
+        imgqq: require('../assets/images/ListImg/qq.png'),
+        imgwei: require('../assets/images/ListImg/weixin.png')
       }
     },
     methods: {
-       resetForm(formName) {
-        this.$refs[formName].resetFields();
-      },
-      login() {
-        this.$router.push('/home')
-        // this.$refs.loginFormRef.validate(async valid => {
-        //   if (!valid) return;
-        //   //const {data: res} = await this.$http.post(login, this.loginForm),这里根据路径去访问,
-        //   //因为结果返回promise，所以加上await;  {data: res}这个是解构的方式
-        //   //if (res.meta.status != 200) return console.log('登录失败')
-        //   //将请求到的数据保存到sessionStorage中，window.sessionStorage.setItem()
-          
-        // })
-
-        /* 
-        这里如果登录不成功，也可以进入home界面,这时我们需要路由导航进行设置,在router文件进行设置
-        
-        */
-      }
-    },
-    directives: {
-      focus: {
-        inserted: function(el) {
-          el.focus()
-    }
-      }
     }
   }
 </script>
-<style  lang='less' scoped>
+<style scoped>
   .lg {
     height: 100%;
     background-color: darkgrey;
   }
   .lg-box {
     width: 400px;
-    height: 300px;
+    height: 400px;
     background-color: white;
     border-radius: 3px;
     position: absolute;
@@ -103,12 +69,13 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
-    img {
+    
+  }
+  img {
       width: 100%;
       height: 100%;
       border-radius: 50%;
     }
-  }
   .btns {
     display: flex;
     justify-content: flex-end;
@@ -119,5 +86,21 @@
     width: 100%;
     padding: 0 20px;
     box-sizing: border-box;
+  }
+  p {
+    color: #CDCDB4;
+  }
+  .changew {
+    width: 150px;
+    height: 35px;
+  }
+  .changew:nth-of-type(2) {
+    margin-left: 55px;
+  }
+  .changew img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    padding: 0 5px;
   }
 </style>

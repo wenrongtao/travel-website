@@ -3,23 +3,22 @@
     <div class="header">
       <div><span>旅行，我们一直在路上</span><strong>Travel, we are always on the road</strong></div>
       <div>
-        <i><img :src="login" class="login">Log in</i>
-        <i><img :src="register" class="register">Sign up</i>
-        <img :src="avatar" title="点击进入个人中心" class="avatar" @click="dialogVisible = true"></div>
-        <el-dialog
-          title="提示"
-          :visible.sync="dialogVisible"
-          width="30%"
-          :before-close="handleClose">
-          <span>是否进入个人中心??</span>
-          <span slot="footer" class="dialog-footer">
-            <el-button @click="dialogVisible = false">取 消</el-button>
-            <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+        <i @click="lg"><img :src="login" class="login" >Log in</i>
+        <i @click="rg"><img :src="register" class="register">Sign up</i>
+        <el-dropdown :hide-on-click="true" @command="handleCommand" size="medium">
+          <span class="el-dropdown-link">
+            <img :src="avatar" title="请选择" class="avatar">
           </span>
-        </el-dialog>
+          <el-dropdown-menu slot="dropdown" >
+            <el-dropdown-item divided command="a">Person Center</el-dropdown-item>
+            <el-dropdown-item divided command="b">Setting</el-dropdown-item>
+            <el-dropdown-item divided command="c">Log out</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </div>
     </div>
     <div class="main">
-      <el-carousel :interval="4000" type="card" height="200px">
+      <el-carousel :interval="2000" type="card" height="200px">
         <el-carousel-item v-for="item in slideimg" :key="item">
           <img :src="item" title="来一场说走就走的旅行" alt="抱歉，图片无法加载">
         </el-carousel-item>
@@ -57,13 +56,15 @@ export default {
     Slide
   },
   methods: {
-     handleClose(done) {
-        this.$confirm('确认关闭？')
-          .then(_ => {
-            done();
-          })
-          .catch(_ => {});
-      }
+    handleCommand(command) {
+      this.$message('click on item ' + command);
+    },
+    lg() {
+      this.$router.push('/login')
+    },
+    rg() {
+      this.$router.push('/register')
+    }
   }
 }
 </script>
@@ -125,9 +126,16 @@ export default {
     margin-top: 8px;
     color: white;
     cursor: pointer;
+    font-weight: 700;
   }
   .header i:nth-of-type(2) {
     border: 2px solid white;
     border-radius: 5px;
+  }
+  .el-icon-arrow-down {
+    font-size: 12px;
+  }
+  .el-dropdown-menu {
+    font-weight: 700;
   }
 </style>
