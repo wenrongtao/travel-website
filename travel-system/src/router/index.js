@@ -3,11 +3,26 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const home = () =>import('../views/Home.vue')
-const nav = () =>import('../views/Nav.vue')
 const main = () =>import('../components/NavBar/main.vue')
+
 const login = () =>import('../views/Login.vue')
 const register = () =>import('../views/Register.vue')
 
+const nav = () =>import('../views/Nav.vue')
+const strategynotes = () =>import('../components/SwiterBar/Strategy/StrategyNotes.vue')
+const shopping = () =>import('../components/SwiterBar/GlobalShopping/Shopping.vue')
+const card = () =>import('../components/SwiterBar/GiftCard/Gift.vue')
+const remark = () =>import('../components/SwiterBar/Remark/Remark.vue')
+const contact = () =>import('../components/SwiterBar/Contact/Contact.vue')
+
+const city = () =>import('../components/NavBar/City/city.vue')
+const comment = () =>import('../components/NavBar/Comment/comment.vue')
+const food = () =>import('../components/NavBar/Food/descFood.vue')
+const hotel = () =>import('../components/NavBar/Hotel/hotel.vue')
+const scenic = () =>import('../components/NavBar/Scenic/scenic.vue')
+const tour = () =>import('../components/NavBar/Tour/tour.vue')
+const traffic = () =>import('../components/NavBar/Traffic/traffic.vue')
+const weather = () =>import('../components/NavBar/Weather/weather.vue')
 
 const routes = [
   {
@@ -21,8 +36,31 @@ const routes = [
         path: '/nav', component: nav,
         redirect: '/main',
         children: [
-          {path: '/main',component: main}
+          {path: '/main', component: main},
+          {path: '/city', component: city},
+          {path: '/comment', component: comment},
+          {path: '/food', component: food},
+          {path: '/hotel', component: hotel},
+          {path: '/scenic', component: scenic},
+          {path: '/tour', component: tour},
+          {path: '/traffic', component: traffic},
+          {path: '/weather', component: weather}
         ]
+      },
+      {
+        path: '/strategynotes', component: strategynotes
+      },
+      {
+        path: '/shopping', component: shopping
+      },
+      {
+        path: '/card', component: card
+      },
+      {
+        path: '/remark', component: remark
+      },
+      {
+        path: '/contact', component: contact
       }
     ]
   },
@@ -32,6 +70,7 @@ const routes = [
   {
     path: '/register', component: register
   }
+  
 ]
 
 const router = new VueRouter({
