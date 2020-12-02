@@ -160,7 +160,7 @@
       </el-tab-pane>
     </el-tabs>
     <!-- 旅游专栏 -->
-    <div class="specialColumn">
+    <div class="specialCliumn">
       <p class="p1">著名旅行家----<span>徐霞客</span></p>
       <div class="block">
         <el-carousel height="200px">
@@ -171,28 +171,30 @@
       </div>
       <div>
         <p class="p2">没有什么可以阻挡想去看望世界的心！！</p>
-        <el-button type="text" @colck="dialogTableVisible = true">查看TA的旅行故事></el-button>
-        <el-dialog title="李小龙-武术宗师、演员、导演" :visible.sync="dialogTableVisible">
-          <p>李小龙（1940年11月27日—1973年7月20日），原名李振藩，师承叶问，出生于美国加州旧金山，
-            祖籍中国广东顺德均安镇。他是世界武道变革先驱者、武术技击家、武术哲学家、UFC开创者、
-            MMA之父、武术宗师、功夫片的开创者和截拳道创始人、华人武打电影演员，
-            中国功夫首位全球推广者、好莱坞华人演员。
+        <el-button type="text" @click="dialogTableVisible = true">查看TA的旅行故事></el-button>
+        <el-dialog title="徐霞客-地理学家、旅行家和探险家" :visible.sync="dialogTableVisible">
+          <p>徐霞客（1587年1月5日—1641年3月8日），名弘祖，字振之，号霞客，汉族，
+            明南直隶江阴（今江苏江阴市）人。伟大的地理学家、旅行家和探险家。崇祯十年（1637）
+            正月十九日，由赣入湘，从攸县进入今衡东县境，历时55天，先后游历了今衡阳市所辖的衡东、
+            衡山、南岳、衡阳、衡南、常宁、祁东、耒阳各县（市）区，三进衡州府，
+            饱览了衡州境内的秀美山水和人文大观，留下了描述衡州山川形胜、风土人情的15000余字的
+            衡游日记。他对石鼓山和石鼓书院的详尽记述，为后人修复石鼓书院提供了珍贵的史料。
           </p>
           <ul>
-            <ol>国籍：美国（美籍华人）</ol>
-            <ol>民族：汉族</ol>
-            <ol>职业：截拳道宗师，武学家，演员，导演，编剧</ol>
-            <ol>身高：173cm</ol>
-            <ol>星座：射手座</ol>
-            <ol>血型：O</ol>
-            <ol>影视作品：《猛龙过江》、《龙争虎斗》、《精武门》</ol>
-            <ol>影视成就：“台湾金马奖最佳技艺”、“香港电影金像奖终身成就奖”、“英国传媒协会传奇大奖”</ol>
+            <li>国籍：美国（美籍华人）</li>
+            <li>民族：汉族</li>
+            <li>职业：截拳道宗师，武学家，演员，导演，编剧</li>
+            <li>身高：173cm</li>
+            <li>星座：射手座</li>
+            <li>血型：O</li>
+            <li>影视作品：《猛龙过江》、《龙争虎斗》、《精武门》</li>
+            <li>影视成就：“台湾金马奖最佳技艺”、“香港电影金像奖终身成就奖”、“英国传媒协会传奇大奖”</li>
           </ul>
         </el-dialog>
       </div>
     </div>
     <!-- 专栏二 -->
-    <div class="specialColumn">
+    <div class="specialCliumn">
       <p class="p1">著名旅行家----<span>徐霞客</span></p>
       <div class="block">
         <el-carousel height="200px">
@@ -203,7 +205,7 @@
       </div>
       <div>
         <p class="p2">没有什么可以阻挡想去看望世界的心！！</p>
-        <el-button type="text" @colck="dialogTableVisible = true">查看TA的旅行故事></el-button>
+        <el-button type="text" @click="dialogTableVisible = true">查看TA的旅行故事></el-button>
         <el-dialog title="李小龙--武术宗师、演员、导演" :visible.sync="dialogTableVisible">
           <p class="desciption">李小龙（1940年11月27日—1973年7月20日），原名李振藩，师承叶问，出生于美国加州旧金山，
             祖籍中国广东顺德均安镇。他是世界武道变革先驱者、武术技击家、武术哲学家、UFC开创者、
@@ -216,14 +218,14 @@
             1973年7月20日突然在香港逝世，享年33岁。
           </p>
           <ul>
-            <ol>国籍：美国（美籍华人）</ol>
-            <ol>民族：汉族</ol>
-            <ol>职业：截拳道宗师，武学家，演员，导演，编剧</ol>
-            <ol>身高：173cm</ol>
-            <ol>星座：射手座</ol>
-            <ol>血型：O</ol>
-            <ol>影视作品：《猛龙过江》、《龙争虎斗》、《精武门》</ol>
-            <ol>影视成就：“台湾金马奖最佳技艺”、“香港电影金像奖终身成就奖”、“英国传媒协会传奇大奖”</ol>
+            <li>国籍：美国（美籍华人）</li>
+            <li>民族：汉族</li>
+            <li>职业：截拳道宗师，武学家，演员，导演，编剧</li>
+            <li>身高：173cm</li>
+            <li>星座：射手座</li>
+            <li>血型：O</li>
+            <li>影视作品：《猛龙过江》、《龙争虎斗》、《精武门》</li>
+            <li>影视成就：“台湾金马奖最佳技艺”、“香港电影金像奖终身成就奖”、“英国传媒协会传奇大奖”</li>
           </ul>
         </el-dialog>
       </div>
@@ -262,7 +264,7 @@ export default {
     height: 400px;
     margin-top: 10px;
   }
-  .el-tabs,.specialColumn {
+  .el-tabs,.specialCliumn {
     margin-top: 20px;
   }
   .el-tabs {
@@ -287,9 +289,9 @@ export default {
   .right .pnotes {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-olne-clamp: 3;
+    -webkit-line-clamp: 3;
     overflow: hidden;
-    olne-height: 25px;
+    line-height: 25px;
     text-indent: 2em;
     color: #8B7E66;
   }
@@ -314,22 +316,22 @@ export default {
     height: 50px;
     margin-right: 5px;
     border-radius: 50%;
-    vertical-aolgn: middle;
+    vertical-align: middle;
   }
-  .specialColumn {
+  .specialCliumn {
     float: right;
     width: 400px;
     border-bottom: 1px double #ccc;
     margin: 20px 0;
   }
-  .specialColumn .author {
+  .specialCliumn .author {
     width: 100%;
     height: 100%;
   }
   .el-button {
     float: right;
   }
-  .specialColumn .p1 {
+  .specialCliumn .p1 {
     border-bottom: 2px dotted #ccc;
     padding: 5px 0;
     margin: 15px 0;
@@ -345,6 +347,12 @@ export default {
     column-count: 3;
     column-rule: 2px dotted #cccc;
     column-gap: 30px;
+  }
+  .el-dialog ul {
+    margin: 30px 0;
+  } 
+  .el-dialog ul li:hover {
+    color:darkorange
   }
 </style>
 

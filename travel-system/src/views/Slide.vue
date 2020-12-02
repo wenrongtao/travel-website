@@ -16,8 +16,8 @@
             </el-submenu>
             <el-menu-item index="3" @click="shoppingClick">全球购</el-menu-item>
             <el-menu-item index="4" @click="cardClick">礼品卡</el-menu-item>
-            <el-menu-item index="5" @click="commentClick">评论</el-menu-item>
-            <el-menu-item index="6" @click="contactClick">联系我们</el-menu-item>
+            <el-menu-item index="5" @click="commentClick">意见反馈</el-menu-item>
+            <el-menu-item index="6" @click="contactClick">热线服务</el-menu-item>
             <el-menu-item class="search">
               <el-input
                 placeholder="请输入要查找的城市"

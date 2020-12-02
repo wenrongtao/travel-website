@@ -24,6 +24,11 @@ const tour = () =>import('../components/NavBar/Tour/tour.vue')
 const traffic = () =>import('../components/NavBar/Traffic/traffic.vue')
 const weather = () =>import('../components/NavBar/Weather/weather.vue')
 
+const process = () =>import('../components/SwiterBar/GiftCard/GiftUser/ProcessPurchase.vue')
+const question = () =>import('../components/SwiterBar/GiftCard/GiftUser/Question.vue')
+const service = () =>import('../components/SwiterBar/GiftCard/GiftUser/ServiceRgulations.vue')
+const tutorial = () =>import('../components/SwiterBar/GiftCard/GiftUser/Tutorial.vue')
+
 const routes = [
   {
     path: '/', redirect: '/home'
@@ -54,7 +59,22 @@ const routes = [
         path: '/shopping', component: shopping
       },
       {
-        path: '/card', component: card
+        path: '/card', component: card,
+        redirect: '/process',
+        children: [
+          {
+            path: '/process', component: process
+          },
+          {
+            path: '/question', component: question
+          },
+          {
+            path: '/service', component: service
+          },
+          {
+            path: '/tutorial', component: tutorial
+          }
+        ]
       },
       {
         path: '/remark', component: remark
