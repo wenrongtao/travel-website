@@ -18,6 +18,15 @@
         <li>
           <img :src="img">
           <span class="name">大头</span>
+          <div class="rate">
+            <span>对我们的网站还满意吗？</span>
+          <el-rate
+            v-model="value"
+            text-color="#ff9900"
+            :colors="colors"
+            show-text>
+          </el-rate>
+          </div>
           <div class="fayan">
             <span class="left" @click="dialogVisible = true">APP是我用过最好的，体验感贼棒，大赞
               111111111111111111111111
@@ -44,6 +53,15 @@
         <li>
           <img :src="img">
           <span class="name">大头</span>
+          <div class="rate">
+            <span>对我们的网站还满意吗？</span>
+          <el-rate
+            v-model="value"
+            text-color="#ff9900"
+            :colors="colors"
+            show-text>
+          </el-rate>
+          </div>
           <div class="fayan">
             <span class="left" @click="dialogVisible = true">APP是我用过最好的，体验感贼棒，大赞
               111111111111111111111111
@@ -70,6 +88,15 @@
         <li>
           <img :src="img">
           <span class="name">大头</span>
+          <div class="rate">
+            <span>对我们的网站还满意吗？</span>
+          <el-rate
+            v-model="value"
+            text-color="#ff9900"
+            :colors="colors"
+            show-text>
+          </el-rate>
+          </div>
           <div class="fayan">
             <span class="left" @click="dialogVisible = true">APP是我用过最好的，体验感贼棒，大赞
               111111111111111111111111
@@ -96,6 +123,15 @@
         <li>
           <img :src="img">
           <span class="name">大头</span>
+          <div class="rate">
+            <span>对我们的网站还满意吗？</span>
+          <el-rate
+            v-model="value"
+            text-color="#ff9900"
+            :colors="colors"
+            show-text>
+          </el-rate>
+          </div>
           <div class="fayan">
             <span class="left" @click="dialogVisible = true">APP是我用过最好的，体验感贼棒，大赞
               111111111111111111111111
@@ -131,7 +167,9 @@ export default {
   data () {
     return {
       img: require('../../../assets/images/ListImg/jouney1.jpg'),
-      dialogVisible: false
+      dialogVisible: false,
+      value: null,
+      colors: ['#99A9BF', '#F7BA2A', '#FF9900']
     }
   },
   methods: {}
@@ -146,6 +184,7 @@ export default {
     color: darkorange;
   }
   .remark li{
+    background-color: white;
     list-style: none;
   }
   .remark li img {
@@ -161,7 +200,7 @@ export default {
     margin-top: 30px;
   }
   .remark li:hover {
-    background-color: 	#CDC9C9;
+    background-color: #F5F5F5;
     cursor: pointer;
   }
   .remark .name {
@@ -169,7 +208,7 @@ export default {
     font-weight: 700;
   }
   .fayan {
-    margin: 10px 0px;
+    margin: 35px 0 10px 0;
     display: flex;
     justify-content: space-between;
   }
@@ -186,7 +225,9 @@ export default {
   .fayan .right span:nth-of-type(n+2) {
     color: red;
   }
-  
+  .fayan .right span:nth-of-type(n+2):hover {
+    color: darkorange;
+  }
   .fayan .left {
     color: 	#8B8B7A;
     display: -webkit-box;
@@ -202,5 +243,15 @@ export default {
     float: right;
     margin-top: 30px;
     margin-left: 10px;
+  }
+  .rate {
+    margin: 20px 0;
+  }
+  .rate .el-rate {
+    font-size: 30px;
+    padding: 2px 0;
+  }
+  .rate span {
+    color: #8B8B7A;
   }
 </style>
