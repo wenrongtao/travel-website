@@ -10,6 +10,8 @@ const register = () =>import('../views/Register.vue')
 
 const nav = () =>import('../views/Nav.vue')
 const strategynotes = () =>import('../components/SwiterBar/Strategy/StrategyNotes.vue')
+const Strategyexperience = () =>import('../components/SwiterBar/Strategy/StrategyExperience.vue')
+const Writenotes = () =>import('../components/SwiterBar/Strategy/WriteNotes.vue')
 const shopping = () =>import('../components/SwiterBar/GlobalShopping/Shopping.vue')
 const card = () =>import('../components/SwiterBar/GiftCard/Gift.vue')
 const remark = () =>import('../components/SwiterBar/Remark/Remark.vue')
@@ -54,6 +56,12 @@ const routes = [
       },
       {
         path: '/strategynotes', component: strategynotes
+      },
+      {
+        path: '/Strategyexperience', component: Strategyexperience
+      },
+      {
+        path: '/Writenotes', component: Writenotes
       },
       {
         path: '/shopping', component: shopping
