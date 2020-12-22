@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="slid">
     <el-container>
         <el-header>
           <el-menu 
@@ -83,6 +83,9 @@ export default {
 }
 </script>
 <style  scoped>
+  #slid {
+    width: 100%;
+  }
   .el-menu-item {
     font-size: 16px;
     font-weight: 700;
