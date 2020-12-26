@@ -1,64 +1,121 @@
 <template>
-  <div id='data'>
-    <div class="shop"></div>
-    <header>
-    <h1>购物-数据可视化分析</h1>
-    <div class="showTime">{{date | formatDate}}</div>
-    </header>
-    <div class="mainbox">
-      <div class="column">
-        <div class="panel bar">
-          <h2>柱形图-就业行业</h2>
-          <div class="chart"></div>
-          <div class="panel-footer"></div>
-        </div>
-        <div class="panel line">
-          <h2>柱形图-就业行业<a href="javascript:;">2020</a><a href="javascript:;">2021</a></h2>
-          <div class="chart"></div>
-          <div class="panel-footer"></div>
-        </div>
-        <div class="panel pie">
-          <h2>柱形图-就业行业</h2>
-          <div class="chart"></div>
-          <div class="panel-footer"></div>
+  <div id="num">
+    <div class="shop">
+      <el-row>
+        <h1>热门推荐商品</h1>
+        <el-button type="primary" 
+          plain 
+          size="small" 
+          v-for="(item, index) in commodityList" 
+          :key="index"
+          @click="drawer = true">{{item}}</el-button>
+        <el-drawer
+          :visible.sync="drawer"
+          :with-header="false">
+          <div class="classify">
+            <el-row v-for="(item, index) in classifyList" :key="index">
+              <el-button type="warning" size="small">{{item.tit}}  ></el-button>
+              <span v-for="(i, index) in item.tit1" :key="index">{{i}}</span>
+            </el-row>
+          </div>
+        </el-drawer>
+      </el-row>
+      <el-tabs type="border-card">
+        <el-tab-pane :label="item" v-for="(item, index) in hotList" :key="index">
+          <div class="dl">
+            <div class="detail" v-for="(item, index) in shopList" :key="index">
+              <img :src="item.img" alt="" srcset="">
+              <p>{{item.title}}</p>
+              <span class="pspan">{{item.desc}}</span>
+              <div class="price">
+                <span class="span1">
+                  {{item.newPrice}}
+                  <i></i>
+                </span>
+                <span class="span2">{{item.oldPrice}}</span>
+              </div>
+            </div>
+          </div>
+        </el-tab-pane>
+      </el-tabs>
+      <div class="place">
+        <h1>热门目的地商户|<span class="like">猜你喜欢</span></h1>
+        <hr>
+        <div class="cmerh">
+          <div class="merchant" v-for="(item, index) in contentList" :key="index">
+            <img :src="item.img" alt="" srcset="">
+            <div class="content">
+              <p class="cp1">{{item.title}}</p>
+              <p class="cp2">{{item.sp}}<span class="cspan1">退货包运费</span></p>
+              <p class="cp3">{{item.price}}<span class="cspan2">已售1652件</span></p>
+              <p class="cp4"><span class="cspan3">领劵</span><em>五元优惠劵</em></p>
+              <p class="cp5"><span class="cspan4">返现</span><em>满五十立减10</em></p>
+              <p class="cp6">{{item.des}}</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="column">
-        <div class="no">
-          <div class="no-hd">
-            <ul>
-              <li>123563</li>
-              <li>198762</li>
-            </ul>
+    </div>
+    <div id='data'>
+      <header>
+      <h1>购物-数据可视化分析</h1>
+      <div class="showTime">{{date | formatDate}}</div>
+      </header>
+      <div class="mainbox">
+        <div class="column">
+          <div class="panel bar">
+            <h2>柱形图-就业行业</h2>
+            <div class="chart"></div>
+            <div class="panel-footer"></div>
           </div>
-          <div class="no-bd">
-            <ul>
-              <li>前端需求人数</li>
-              <li>市场供应人数</li>
-            </ul>
+          <div class="panel line">
+            <h2>柱形图-就业行业<a href="javascript:;">2020</a><a href="javascript:;">2021</a></h2>
+            <div class="chart"></div>
+            <div class="panel-footer"></div>
+          </div>
+          <div class="panel pie">
+            <h2>柱形图-就业行业</h2>
+            <div class="chart"></div>
+            <div class="panel-footer"></div>
           </div>
         </div>
-        <div class="map">
-          <div class="map1"></div>
-          <div class="map2"></div>
-          <div class="chart"></div>
+        <div class="column">
+          <div class="no">
+            <div class="no-hd">
+              <ul>
+                <li>123563</li>
+                <li>198762</li>
+              </ul>
+            </div>
+            <div class="no-bd">
+              <ul>
+                <li>前端需求人数</li>
+                <li>市场供应人数</li>
+              </ul>
+            </div>
+          </div>
+          <div class="map">
+            <div class="map1"></div>
+            <div class="map2"></div>
+            <div class="chart"></div>
+          </div>
         </div>
-      </div>
-      <div class="column">
-        <div class="panel bar1">
-          <h2>柱形图-就业行业</h2>
-          <div class="chart"></div>
-          <div class="panel-footer"></div>
-        </div>
-        <div class="panel line1">
-          <h2>柱形图-就业行业</h2>
-          <div class="chart"></div>
-          <div class="panel-footer"></div>
-        </div>
-        <div class="panel pie1">
-          <h2>柱形图-就业行业</h2>
-          <div class="chart"></div>
-          <div class="panel-footer"></div>
+        <div class="column">
+          <div class="panel bar1">
+            <h2>柱形图-就业行业</h2>
+            <div class="chart"></div>
+            <div class="panel-footer"></div>
+          </div>
+          <div class="panel line1">
+            <h2>柱形图-就业行业</h2>
+            <div class="chart"></div>
+            <div class="panel-footer"></div>
+          </div>
+          <div class="panel pie1">
+            <h2>柱形图-就业行业</h2>
+            <div class="chart"></div>
+            <div class="panel-footer"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -74,7 +131,207 @@ export default {
   name: '',
   data () {
     return {
-      date: new Date()
+      date: new Date(),
+      commodityList: ['商品类型', '优惠类型', '退免税', '名店购'],
+      drawer: false,
+      hotList: ['家居', '美食', '美妆', '数码', '服饰鞋包', '纪念品'],
+      classifyList: [
+        {
+          tit: '电器',
+          tit1: ['电视', '洗衣机', '空调', '冰箱', '录音机', '电饭煲', '吸尘器']
+        },
+        {
+          tit: '手机',
+          tit1: ['5G手机', '老年机', '全屏手机', '游戏手机', '拍照手机']
+        },
+        {
+          tit: '家居',
+          tit1: ['电视', '洗衣机', '空调', '冰箱', '录音机', '电饭煲', '吸尘器']
+        },
+        {
+          tit: '服装',
+          tit1: ['电视', '洗衣机', '空调', '冰箱', '录音机', '电饭煲', '吸尘器']
+        },
+        {
+          tit: '特产',
+          tit1: ['电视', '洗衣机', '空调', '冰箱', '录音机', '电饭煲', '吸尘器']
+        },
+        {
+          tit: '图书',
+          tit1: ['电视', '洗衣机', '空调', '冰箱', '录音机', '电饭煲', '吸尘器']
+        },
+        {
+          tit: '艺术',
+          tit1: ['电视', '洗衣机', '空调', '冰箱', '录音机', '电饭煲', '吸尘器']
+        },
+        {
+          tit: '珠宝',
+          tit1: ['电视', '洗衣机', '空调', '冰箱', '录音机', '电饭煲', '吸尘器']
+        },
+        {
+          tit: '宠物',
+          tit1: ['电视', '洗衣机', '空调', '冰箱', '录音机', '电饭煲', '吸尘器']
+        },
+        {
+          tit: '玩具',
+          tit1: ['电视', '洗衣机', '空调', '冰箱', '录音机', '电饭煲', '吸尘器']
+        },
+        {
+          tit: '医药',
+          tit1: ['电视', '洗衣机', '空调', '冰箱', '录音机', '电饭煲', '吸尘器']
+        }
+      ],
+      shopList: [
+        {
+          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          title: 'the best choice',
+          desc: '这将是你不错的选择',
+          newPrice: '￥1680.0',
+          oldPrice: '￥2290.0'
+        },
+        {
+          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          title: 'the best choice',
+          desc: '这将是你不错的选择',
+          newPrice: '￥1680.0',
+          oldPrice: '￥2290.0'
+        },
+        {
+          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          title: 'the best choice',
+          desc: '这将是你不错的选择',
+          newPrice: '￥1680.0',
+          oldPrice: '￥2290.0'
+        },
+        {
+          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          title: 'the best choice',
+          desc: '这将是你不错的选择',
+          newPrice: '￥1680.0',
+          oldPrice: '￥2290.0'
+        },
+        {
+          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          title: 'the best choice',
+          desc: '这将是你不错的选择',
+          newPrice: '￥1680.0',
+          oldPrice: '￥2290.0'
+        },
+        {
+          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          title: 'the best choice',
+          desc: '这将是你不错的选择',
+          newPrice: '￥1680.0',
+          oldPrice: '￥2290.0'
+        },
+        {
+          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          title: 'the best choice',
+          desc: '这将是你不错的选择',
+          newPrice: '￥1680.0',
+          oldPrice: '￥2290.0'
+        },
+        {
+          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          title: 'the best choice',
+          desc: '这将是你不错的选择',
+          newPrice: '￥1680.0',
+          oldPrice: '￥2290.0'
+        },
+        {
+          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          title: 'the best choice',
+          desc: '这将是你不错的选择',
+          newPrice: '￥1680.0',
+          oldPrice: '￥2290.0'
+        },
+        {
+          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          title: 'the best choice',
+          desc: '这将是你不错的选择',
+          newPrice: '￥1680.0',
+          oldPrice: '￥2290.0'
+        },
+        {
+          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          title: 'the best choice',
+          desc: '这将是你不错的选择',
+          newPrice: '￥1680.0',
+          oldPrice: '￥2290.0'
+        },
+        {
+          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          title: 'the best choice',
+          desc: '这将是你不错的选择',
+          newPrice: '￥1680.0',
+          oldPrice: '￥2290.0'
+        }
+      ],
+      contentList: [
+        {
+          img: require('../../../assets/images/shopImg/jewelry.jpg'),
+          title: '女生简约闺蜜、情侣',
+          sp: '关注立减五元',
+          price: '￥158.0',
+          des: '销售榜第五名'
+        },
+        {
+          img: require('../../../assets/images/shopImg/jewelry.jpg'),
+          title: '女生简约闺蜜、情侣',
+          sp: '关注立减五元',
+          price: '￥158.0',
+          des: '销售榜第五名'
+        },
+        {
+          img: require('../../../assets/images/shopImg/jewelry.jpg'),
+          title: '女生简约闺蜜、情侣',
+          sp: '关注立减五元',
+          price: '￥158.0',
+          des: '销售榜第五名'
+        },
+        {
+          img: require('../../../assets/images/shopImg/jewelry.jpg'),
+          title: '女生简约闺蜜、情侣',
+          sp: '关注立减五元',
+          price: '￥158.0',
+          des: '销售榜第五名'
+        },
+        {
+          img: require('../../../assets/images/shopImg/jewelry.jpg'),
+          title: '女生简约闺蜜、情侣',
+          sp: '关注立减五元',
+          price: '￥158.0',
+          des: '销售榜第五名'
+        },
+        {
+          img: require('../../../assets/images/shopImg/jewelry.jpg'),
+          title: '女生简约闺蜜、情侣',
+          sp: '关注立减五元',
+          price: '￥158.0',
+          des: '销售榜第五名'
+        },
+        {
+          img: require('../../../assets/images/shopImg/jewelry.jpg'),
+          title: '女生简约闺蜜、情侣',
+          sp: '关注立减五元',
+          price: '￥158.0',
+          des: '销售榜第五名'
+        },
+        {
+          img: require('../../../assets/images/shopImg/jewelry.jpg'),
+          title: '女生简约闺蜜、情侣',
+          sp: '关注立减五元',
+          price: '￥158.0',
+          des: '销售榜第五名'
+        },
+        {
+          img: require('../../../assets/images/shopImg/jewelry.jpg'),
+          title: '女生简约闺蜜、情侣',
+          sp: '关注立减五元',
+          price: '￥158.0',
+          des: '销售榜第五名'
+        }
+      ]
     }
   },
   mounted() {
@@ -897,7 +1154,144 @@ export default {
 }
 </script>
 <style  scoped>
-  #data {
-    margin: 50px 10px 0 10px;
+  #num {
+    margin: 40px 10px 0 10px;
+  }
+  .shop {
+    border: 2px solid #F8F8FF;
+    margin-bottom: 40px;
+    padding: 10px;
+  }
+  .el-button {
+    margin-top: 15px;
+  }
+  .el-tabs {
+    margin-top: 30px;
+  }
+  .detail {
+    width: 350px;
+    background-color: white;
+    border: 2px solid #F5F5F5;
+    margin: 20px 8px;
+    cursor: pointer;
+    padding: 3px 3px;
+  }
+  .price {
+    float: right;
+    width: 160px;
+    height: 24px;
+    border: 1px solid red;
+    margin: 0 auto;
+    line-height: 24px;
+  }
+
+  .span1 {
+    position: relative;
+    float: left;
+    width: 90px;
+    height: 100%;
+    background-color: red;
+    color: #FFFFFF;	
+  }
+    
+  .span1 i {
+    position: absolute;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent white transparent transparent;
+    border-width: 24px 12px 0 0;
+  } 
+  .span2 {
+    text-decoration: line-through;
+  }
+  .detail img {
+    width: 100%;
+  }
+  .dl {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .detail p, .pspan {
+    font-size: 16px;
+    padding-left: 8px;
+  }
+  .detail p:hover, .pspan:hover {
+    color: darkorange;
+  }
+  .detail p {
+    color: #D3D3D3;
+    font-weight: 700;
+  }
+  .deatail .pspan {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .place {
+    margin-top: 60px;
+  }
+  .place h1 {
+    margin: 12px 0;
+  }
+  .place .cmerh {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .place .like {
+    padding-left: 5px;
+    color: red;
+    font-size: 15px;
+  }
+  .place .merchant {
+    width: 400px;
+    height: 200px;
+    background-color: white;
+    margin-top: 50px;
+    padding: 5px 5px;
+  }
+  .place .merchant img {
+    float: left;
+    width: 220px;
+    height: 200px;
+  }
+  .place .merchant .content {
+    padding: 10px 8px;
+  }
+  .place .merchant .cp1 {
+    font-size: 19px;
+  }
+  .place .merchant .cp2, .cp3 {
+    color: red;
+    margin: 8px 5px;
+  }
+  .cp4, .cp5 {
+    margin-top: 8px;
+  }
+  .place .merchant  .cspan3, .cspan4{
+    color: white;
+    background-color: red;
+    padding: 2px 5px;
+    font-weight: 700;
+    margin: 8px 5px;
+  }
+  .place .merchant .cp2 .cspan1, .cspan2, em {
+    float: right;
+    color: #CDC0B0;
+  }
+  .cp6 {
+    margin-top: 15px;
+    font-size: 15px;
+  }
+  .classify span{
+    padding: 5px 8px;
+  }
+  .classify span:hover {
+    color: darkorange;
+    cursor: pointer;
+    font-weight: 700;
   }
 </style>
