@@ -31,6 +31,7 @@ const question = () =>import('../components/SwiterBar/GiftCard/GiftUser/Question
 const service = () =>import('../components/SwiterBar/GiftCard/GiftUser/ServiceRgulations.vue')
 const tutorial = () =>import('../components/SwiterBar/GiftCard/GiftUser/Tutorial.vue')
 
+
 const routes = [
   {
     path: '/', redirect: '/home'
