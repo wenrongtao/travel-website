@@ -1,63 +1,255 @@
 <template>
   <div>
-    <el-table
-      :data="tableData"
-      style="width: 100%">
-      <el-table-column type="expand">
-        <template slot-scope="props">
-          <el-form label-position="left" inline class="demo-table-expand">
-            <el-form-item label="商品名称">
-              <span>{{ props.row.name }}</span>
-            </el-form-item>
-            <el-form-item label="所属店铺">
-              <span>{{ props.row.shop }}</span>
-            </el-form-item>
-            <el-form-item label="商品 ID">
-              <span>{{ props.row.id }}</span>
-            </el-form-item>
-            <el-form-item label="店铺 ID">
-              <span>{{ props.row.shopId }}</span>
-            </el-form-item>
-            <el-form-item label="商品分类">
-              <span>{{ props.row.category }}</span>
-            </el-form-item>
-            <el-form-item label="店铺地址">
-              <span>{{ props.row.address }}</span>
-            </el-form-item>
-            <el-form-item label="商品描述">
-              <span>{{ props.row.desc }}</span>
-            </el-form-item>
-          </el-form>
-        </template>
-      </el-table-column>
-      <el-table-column
-        label="商品 ID"
-        prop="id">
-      </el-table-column>
-      <el-table-column
-        label="商品名称"
-        prop="name">
-      </el-table-column>
-      <el-table-column
-        label="描述"
-        prop="desc">
-      </el-table-column>
-      <el-table-column label="操作">
-      <template slot-scope="scope">
-        <el-button
-          size="mini"
-          @click="handleEdit(scope.$index, scope.row)">订餐</el-button>
-        <el-button
-          size="mini"
-          type="danger"
-          @click="handleDelete(scope.$index, scope.row)">联系商家</el-button>
-        <el-button
-          size="mini"
-          type="success"
-          @click="handleEdit(scope.$index, scope.row)">查看评论</el-button>
-      </template>
-    </el-table-column>
-    </el-table>
+    <div class="cate">
+        <el-autocomplete
+          class="inline-input"
+          v-model="state2"
+          :fetch-suggestions="querySearch"
+          placeholder="请输入商品名"
+          prefix-icon="el-icon-search"
+          :trigger-on-focus="false"
+          @select="handleSelect"
+        >
+        </el-autocomplete>
+        <div class="list">
+          <div class="list1" v-for="(item, index) in list" :key="index">
+            <img :src="item.img" alt="">
+            <p>{{item.title}}</p>
+          </div>
+        </div>
+        <el-tabs type="border-card">
+          <el-tab-pane label="评分高">
+            <div class="food">
+              <img src="../../../assets/images/FoodImg/merchant.jpg" alt="">
+              <em>热销</em>
+              <div class="descri">
+                <h2>文家饭铺-你想要的咱都有</h2>
+                <span><i class="el-icon-star-on">8.9</i></span><span>月销128+件</span>
+                <p class="p1">"口感很好，量足，服务态度好"</p>
+                <p>大约需要89分钟</p>
+              </div>
+            </div>
+            <div class="food">
+              <img src="../../../assets/images/FoodImg/merchant.jpg" alt="">
+              <em>热销</em>
+              <div class="descri">
+                <h2>文家饭铺-你想要的咱都有</h2>
+                <span><i class="el-icon-star-on">8.9</i></span><span>月销128+件</span>
+                <p class="p1">"口感很好，量足，服务态度好"</p>
+                <p>大约需要89分钟</p>
+              </div>
+            </div>
+            <div class="food">
+              <img src="../../../assets/images/FoodImg/merchant.jpg" alt="">
+              <em>热销</em>
+              <div class="descri">
+                <h2>文家饭铺-你想要的咱都有</h2>
+                <span><i class="el-icon-star-on">8.9</i></span><span>月销128+件</span>
+                <p class="p1">"口感很好，量足，服务态度好"</p>
+                <p>大约需要89分钟</p>
+              </div>
+            </div>
+            <div class="food">
+              <img src="../../../assets/images/FoodImg/merchant.jpg" alt="">
+              <em>热销</em>
+              <div class="descri">
+                <h2>文家饭铺-你想要的咱都有</h2>
+                <span><i class="el-icon-star-on">8.9</i></span><span>月销128+件</span>
+                <p class="p1">"口感很好，量足，服务态度好"</p>
+                <p>大约需要89分钟</p>
+              </div>
+            </div>
+            <div class="food">
+              <img src="../../../assets/images/FoodImg/merchant.jpg" alt="">
+              <em>热销</em>
+              <div class="descri">
+                <h2>文家饭铺-你想要的咱都有</h2>
+                <span><i class="el-icon-star-on">8.9</i></span><span>月销128+件</span>
+                <p class="p1">"口感很好，量足，服务态度好"</p>
+                <p>大约需要89分钟</p>
+              </div>
+            </div>
+            <div class="food">
+              <img src="../../../assets/images/FoodImg/merchant.jpg" alt="">
+              <em>热销</em>
+              <div class="descri">
+                <h2>文家饭铺-你想要的咱都有</h2>
+                <span><i class="el-icon-star-on">8.9</i></span><span>月销128+件</span>
+                <p class="p1">"口感很好，量足，服务态度好"</p>
+                <p>大约需要89分钟</p>
+              </div>
+            </div>
+          </el-tab-pane>
+          <el-tab-pane label="销量高">
+            <div class="food">
+              <img src="../../../assets/images/FoodImg/merchant1.jpg" alt="">
+              <em>热销</em>
+              <div class="descri">
+                <h2>文家饭铺-你想要的咱都有</h2>
+                <span><i class="el-icon-star-on">8.9</i></span><span>月销128+件</span>
+                <p class="p1">"口感很好，量足，服务态度好"</p>
+                <p>大约需要89分钟</p>
+              </div>
+            </div>
+            <div class="food">
+              <img src="../../../assets/images/FoodImg/merchant1.jpg" alt="">
+              <em>热销</em>
+              <div class="descri">
+                <h2>文家饭铺-你想要的咱都有</h2>
+                <span><i class="el-icon-star-on">8.9</i></span><span>月销128+件</span>
+                <p class="p1">"口感很好，量足，服务态度好"</p>
+                <p>大约需要89分钟</p>
+              </div>
+            </div>
+            <div class="food">
+              <img src="../../../assets/images/FoodImg/merchant1.jpg" alt="">
+              <div class="descri">
+                <h2>文家饭铺-你想要的咱都有</h2>
+                <span><i class="el-icon-star-on">8.9</i></span><span>月销128+件</span>
+                <p class="p1">"口感很好，量足，服务态度好"</p>
+                <p>大约需要89分钟</p>
+              </div>
+            </div>
+            <div class="food">
+              <img src="../../../assets/images/FoodImg/merchant1.jpg" alt="">
+              <div class="descri">
+                <h2>文家饭铺-你想要的咱都有</h2>
+                <span><i class="el-icon-star-on">8.9</i></span><span>月销128+件</span>
+                <p class="p1">"口感很好，量足，服务态度好"</p>
+                <p>大约需要89分钟</p>
+              </div>
+            </div>
+            <div class="food">
+              <img src="../../../assets/images/FoodImg/merchant1.jpg" alt="">
+              <div class="descri">
+                <h2>文家饭铺-你想要的咱都有</h2>
+                <span><i class="el-icon-star-on">8.9</i></span><span>月销128+件</span>
+                <p class="p1">"口感很好，量足，服务态度好"</p>
+                <p>大约需要89分钟</p>
+              </div>
+            </div>
+          </el-tab-pane>
+          <el-tab-pane label="距离近">
+            <div class="food">
+              <img src="../../../assets/images/FoodImg/merchant2.jpg" alt="">
+              <em>热销</em>
+              <div class="descri">
+                <h2>文家饭铺-你想要的咱都有</h2>
+                <span><i class="el-icon-star-on">8.9</i></span><span>月销128+件</span>
+                <p class="p1">"口感很好，量足，服务态度好"</p>
+                <p>大约需要89分钟</p>
+              </div>
+            </div>
+            <div class="food">
+              <img src="../../../assets/images/FoodImg/merchant2.jpg" alt="">
+              <em>热销</em>
+              <div class="descri">
+                <h2>文家饭铺-你想要的咱都有</h2>
+                <span><i class="el-icon-star-on">8.9</i></span><span>月销128+件</span>
+                <p class="p1">"口感很好，量足，服务态度好"</p>
+                <p>大约需要89分钟</p>
+              </div>
+            </div>
+            <div class="food">
+              <img src="../../../assets/images/FoodImg/merchant2.jpg" alt="">
+              <div class="descri">
+                <h2>文家饭铺-你想要的咱都有</h2>
+                <span><i class="el-icon-star-on">8.9</i></span><span>月销128+件</span>
+                <p class="p1">"口感很好，量足，服务态度好"</p>
+                <p>大约需要89分钟</p>
+              </div>
+            </div>
+            <div class="food">
+              <img src="../../../assets/images/FoodImg/merchant2.jpg" alt="">
+              <div class="descri">
+                <h2>文家饭铺-你想要的咱都有</h2>
+                <span><i class="el-icon-star-on">8.9</i></span><span>月销128+件</span>
+                <p class="p1">"口感很好，量足，服务态度好"</p>
+                <p>大约需要89分钟</p>
+              </div>
+            </div>
+            <div class="food">
+              <img src="../../../assets/images/FoodImg/merchant2.jpg" alt="">
+              <div class="descri">
+                <h2>文家饭铺-你想要的咱都有</h2>
+                <span><i class="el-icon-star-on">8.9</i></span><span>月销128+件</span>
+                <p class="p1">"口感很好，量足，服务态度好"</p>
+                <p>大约需要89分钟</p>
+              </div>
+            </div>
+          </el-tab-pane>
+          <el-tab-pane label="我的订单">
+            <div class="order">
+              <img src="../../../assets/images/FoodImg/merchant1.jpg" alt="" srcset="">
+              <span class="order1">文家饭铺》》</span>
+              <span class="order2">已购买</span>
+              <p class="order3">黄焖鸡米饭<span>x 1</span></p>
+              <p class="order3">可口可乐<span>x 3</span></p>
+              <p class="order4">共选了三件商品，实付<span id="price">￥22.8元</span></p>
+              <p class="order5">再买一单</p>
+              <p class="order6">删除该订单</p>
+              <p class="order7">评价</p>
+            </div>
+            <div class="order">
+              <img src="../../../assets/images/FoodImg/merchant1.jpg" alt="" srcset="">
+              <span class="order1">文家饭铺》》</span>
+              <span class="order2">已购买</span>
+              <p class="order3">黄焖鸡米饭<span>x 1</span></p>
+              <p class="order3">可口可乐<span>x 3</span></p>
+              <p class="order4">共选了三件商品，实付<span id="price">￥22.8元</span></p>
+              <p class="order5">再买一单</p>
+              <p class="order6">删除该订单</p>
+              <p class="order7">评价</p>
+            </div>
+            <div class="order">
+              <img src="../../../assets/images/FoodImg/merchant1.jpg" alt="" srcset="">
+              <span class="order1">文家饭铺》》</span>
+              <span class="order2">已购买</span>
+              <p class="order3">黄焖鸡米饭<span>x 1</span></p>
+              <p class="order3">可口可乐<span>x 3</span></p>
+              <p class="order4">共选了三件商品，实付<span id="price">￥22.8元</span></p>
+              <p class="order5">再买一单</p>
+              <p class="order6">删除该订单</p>
+              <p class="order7">评价</p>
+            </div>
+            <div class="order">
+              <img src="../../../assets/images/FoodImg/merchant1.jpg" alt="" srcset="">
+              <span class="order1">文家饭铺》》</span>
+              <span class="order2">已购买</span>
+              <p class="order3">黄焖鸡米饭<span>x 1</span></p>
+              <p class="order3">可口可乐<span>x 3</span></p>
+              <p class="order4">共选了三件商品，实付<span id="price">￥22.8元</span></p>
+              <p class="order5">再买一单</p>
+              <p class="order6">删除该订单</p>
+              <p class="order7">评价</p>
+            </div>
+            <div class="order">
+              <img src="../../../assets/images/FoodImg/merchant1.jpg" alt="" srcset="">
+              <span class="order1">文家饭铺》》</span>
+              <span class="order2">已购买</span>
+              <p class="order3">黄焖鸡米饭<span>x 1</span></p>
+              <p class="order3">可口可乐<span>x 3</span></p>
+              <p class="order4">共选了三件商品，实付<span id="price">￥22.8元</span></p>
+              <p class="order5">再买一单</p>
+              <p class="order6">删除该订单</p>
+              <p class="order7">评价</p>
+            </div>
+            <div class="order">
+              <img src="../../../assets/images/FoodImg/merchant1.jpg" alt="" srcset="">
+              <span class="order1">文家饭铺》》</span>
+              <span class="order2">已购买</span>
+              <p class="order3">黄焖鸡米饭<span>x 1</span></p>
+              <p class="order3">可口可乐<span>x 3</span></p>
+              <p class="order4">共选了三件商品，实付<span id="price">￥22.8元</span></p>
+              <p class="order5">再买一单</p>
+              <p class="order6">删除该订单</p>
+              <p class="order7">评价</p>
+            </div>
+          </el-tab-pane>
+        </el-tabs>
+
+    </div>
+
   </div>
 </template>
 <script>
@@ -67,55 +259,207 @@ export default {
   name: '',
   data () {
     return {
-      tableData: [{
-          id: '12987122',
-          name: '好滋好味鸡蛋仔',
-          category: '江浙小吃、小吃零食',
-          desc: '荷兰优质淡奶，奶香浓而不腻',
-          address: '上海市普陀区真北路',
-          shop: '王小虎夫妻店',
-          shopId: '10333'
-        }, {
-          id: '12987123',
-          name: '好滋好味鸡蛋仔',
-          category: '江浙小吃、小吃零食',
-          desc: '荷兰优质淡奶，奶香浓而不腻',
-          address: '上海市普陀区真北路',
-          shop: '王小虎夫妻店',
-          shopId: '10333'
-        }, {
-          id: '12987125',
-          name: '好滋好味鸡蛋仔',
-          category: '江浙小吃、小吃零食',
-          desc: '荷兰优质淡奶，奶香浓而不腻',
-          address: '上海市普陀区真北路',
-          shop: '王小虎夫妻店',
-          shopId: '10333'
-        }, {
-          id: '12987126',
-          name: '好滋好味鸡蛋仔',
-          category: '江浙小吃、小吃零食',
-          desc: '荷兰优质淡奶，奶香浓而不腻',
-          address: '上海市普陀区真北路',
-          shop: '王小虎夫妻店',
-          shopId: '10333'
-        }]
+      restaurants: [],
+      state2: '',
+      list: [
+        {
+          img: require('../../../assets/images/FoodImg/cate.png'),
+          title: "蛋糕"
+        },
+        {
+          img: require('../../../assets/images/FoodImg/delicious.png'),
+          title: "美食"
+        },
+        {
+          img: require('../../../assets/images/FoodImg/drink.png'),
+          title: "饮品"
+        },
+        {
+          img: require('../../../assets/images/FoodImg/flower.png'),
+          title: "鲜花"
+        },
+        {
+          img: require('../../../assets/images/FoodImg/grill.png'),
+          title: "烧烤"
+        },
+        {
+          img: require('../../../assets/images/FoodImg/snacks.png'),
+          title: "零食"
+        },
+        {
+          img: require('../../../assets/images/FoodImg/tea.png'),
+          title: "午茶"
+        },
+        {
+          img: require('../../../assets/images/FoodImg/vegetables.png'),
+          title: "蔬菜"
+        }
+      ]
     }
   },
-  methods: {}
+  methods: {
+     querySearch(queryString, cb) {
+        var restaurants = this.restaurants;
+        var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
+        cb(results);
+      },
+      createFilter(queryString) {
+        return (restaurant) => {
+          return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+        };
+      },
+  },
+  mounted() {
+    this.restaurants = this.loadAll();
+  }
 }
 </script>
 <style  scoped>
-   .demo-table-expand {
-    font-size: 0;
-  }
-  .demo-table-expand label {
-    width: 90px;
-    color: #99a9bf;
-  }
-  .demo-table-expand .el-form-item {
-    margin-right: 0;
-    margin-bottom: 0;
-    width: 50%;
-  }
+    .cate {
+      background-color: #fff;
+    }
+    .inline-input {
+      width: 50%;
+      margin: 5px 0 0 5px;
+    }
+    .list {
+      margin: 20px;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .list img {
+      width: 50px;
+      border-radius: 50%;
+      border: 1px solid #E6E6FA;
+      padding: 5px;
+    }
+    .list p {
+      text-align: center;
+    }
+    .list1:hover img {
+      transform: scale(1.1);
+    }
+    .list1:hover img, .list1:hover p {
+      cursor: pointer;
+      color: darkorange;
+      font-weight: 700;
+    }
+    .el-tabs {
+      margin-top: 50px;
+      outline: none;
+    }
+    .food {
+      display: flex;
+      position: relative;
+      margin-top: 28px;
+      border: 2px double #E6E6FA;
+    }
+    .food:hover {
+      cursor: pointer;
+      background-color: #EEEED1;
+    }
+    .food em {
+      position: absolute;
+      left: 2px;
+      padding: 3px 5px;
+      font-weight: 700;
+      color: white;
+      background-color: red;
+    }
+    .food img {
+      width: 120px;
+      height: 120px;
+      margin-right: 30px;
+    }
+    .food .descri {
+      padding: 8px 0;
+    }
+    .food .descri h2 {
+      padding: 5px 0;
+    }
+    .food .descri span {
+      padding: 0 15px;
+      color: red;
+    }
+    .food .descri h2:hover {
+      color: darkorange;
+    }
+    .food .descri p {
+      padding: 7px 0;
+    }
+    .food .descri .p1{
+      color: #CDBE70;
+    }
+    .food .descri p:last-child {
+      color: darkorange;
+    }
+    .order {
+      height: 400px;
+      margin-top: 30px;
+      padding: 5px 0;
+      border: 1px double #E6E6FA;
+      background-color: #EEEED1;
+      box-sizing: border-box;
+    }
+    .order img {
+      vertical-align: middle;
+      width: 60px;
+      height: 60px;
+    }
+    .order .order1 , .order2{
+      font-size: 15px;
+      font-weight: 700;
+      color: red;
+    }
+    .order .order2 {
+      color: white;
+      background-color: red;
+      margin-left: 150px;
+      padding: 5px;
+    }
+    .order .order3 {
+      padding: 10px 0;
+      margin-top: 5px;
+    }
+    .order .order3>span {
+    padding-left: 10px;
+    }
+    .order .order5, .order .order6, .order .order7{
+      font-size: 15px; 
+      font-weight: 700;
+      margin-top: 30px;
+      padding: 5px 0;
+      background-color: 	#DCDCDC;
+      color: rgb(105, 97, 88);
+      text-align: center;
+    }
+    .order .order5 {
+      width: 70px;
+    }
+    .order .order6 {
+      width: 90px;
+    }
+    .order .order7 {
+      width: 60px;
+    }
+    .order:hover {
+      cursor: pointer;
+    }
+    .order .order4 {
+      margin-top: 20px;
+    }
+    .order .order2:hover {
+      cursor: not-allowed;
+    }
+    .order .order5:hover,.order6:hover, .order7:hover {
+      color: red;
+      font-weight: 700;
+      font-size: 17px;
+    }
+    .order4 #price {
+      font-size: 18px;
+      color: red;
+    }
 </style>
