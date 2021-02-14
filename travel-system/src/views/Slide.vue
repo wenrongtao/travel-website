@@ -10,12 +10,7 @@
             active-text-color="#1E90FF"
             router>
             <el-menu-item index="./nav">首页</el-menu-item>
-            <el-submenu>
-              <template slot="title" class="gl" >攻略</template>
-              <el-menu-item index="/strategynotes">攻略游记</el-menu-item>
-              <el-menu-item index="/Strategyexperience">验客</el-menu-item>
-              <el-menu-item index="/Writenotes">写游记</el-menu-item>
-            </el-submenu>
+            <el-menu-item index="/strategynotes">攻略游记</el-menu-item>
             <el-menu-item index="/shopping">全球购</el-menu-item>
             <el-menu-item index="/card">礼品卡</el-menu-item>
             <el-menu-item index="/remark">意见反馈</el-menu-item>

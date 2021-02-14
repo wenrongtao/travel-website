@@ -2,19 +2,17 @@
   <div id="home">
     <div class="header">
       <div><span>旅行，我们一直在路上</span><strong>Travel, we are always on the road</strong></div>
-      <div>
+      <div style="position:relative">
         <i @click="lg"><img :src="login" class="login" >Log in</i>
         <i @click="rg"><img :src="register" class="register">Sign up</i>
-        <el-dropdown :hide-on-click="true" @command="handleCommand" size="medium">
-          <span class="el-dropdown-link">
-            <img :src="avatar" title="请选择" class="avatar">
-          </span>
-          <el-dropdown-menu slot="dropdown" >
-            <el-dropdown-item divided command="a">Person Center</el-dropdown-item>
-            <el-dropdown-item divided command="b">Setting</el-dropdown-item>
-            <el-dropdown-item divided command="c">Log out</el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
+        <img :src="avatar" title="请选择" class="avatar">
+        <div class="person">
+          <ul>
+            <li @click="pers">Personal Center</li>
+            <li @click="set">Setting</li>
+            <li @click="quit">Quit</li>
+          </ul>
+        </div>
       </div>
     </div>
     <div class="main">
@@ -56,14 +54,25 @@ export default {
     Slide
   },
   methods: {
-    handleCommand(command) {
-      this.$message('click on item ' + command);
-    },
     lg() {
       this.$router.push('/login')
     },
     rg() {
       this.$router.push('/register')
+    },
+    quit() {
+      var cf = confirm('您确定要退出吗？？')
+      if (cf) {
+        window.opener = null; 
+        window.open('', '_self'); 
+        window.close()
+      } else{}
+    },
+    pers() {
+      this.$router.push('/personal')
+    },
+    set() {
+      this.$router.push('/setting')
     }
   }
 }
@@ -135,7 +144,29 @@ export default {
   .el-icon-arrow-down {
     font-size: 12px;
   }
-  .el-dropdown-menu {
+  .person {
+    position: absolute;
+    right: 0;
+    width: 160px;
+    height: 110px;
+    background-color: #FFB90F;
+    border-radius: 5px;
+  }
+  .header .avatar:hover >.person {
+    display: block;
+  }
+  .person ul li {
+    list-style: none;
+    font-size: 15px;
     font-weight: 700;
+    color: white;
+    text-align: center;
+    border-bottom: 1px solid white;
+    line-height: 36px;
+  }
+  .person ul li:hover {
+    color: darkorange;
+    background-color: #6495ED;
+    cursor: pointer;
   }
 </style>
