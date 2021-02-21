@@ -17,9 +17,8 @@ const card = () =>import('../components/SwiterBar/GiftCard/Gift.vue')
 const remark = () =>import('../components/SwiterBar/Remark/Remark.vue')
 const contact = () =>import('../components/SwiterBar/Contact/Contact.vue')
 
-const city = () =>import('../components/NavBar/City/city.vue')
 const comment = () =>import('../components/NavBar/Comment/comment.vue')
-const food = () =>import('../components/NavBar/Food/descFood.vue')
+const descfood = () =>import('../components/NavBar/Food/descFood.vue')
 const hotel = () =>import('../components/NavBar/Hotel/hotel.vue')
 const scenic = () =>import('../components/NavBar/Scenic/scenic.vue')
 const tour = () =>import('../components/NavBar/Tour/tour.vue')
@@ -34,6 +33,12 @@ const tutorial = () =>import('../components/SwiterBar/GiftCard/GiftUser/Tutorial
 const setting = () =>import('../views/Setting.vue')
 const personal = () =>import('../views/Personal.vue')
 
+const hoteldetails = () =>import('../components/NavBar/Hotel/hoteldetails.vue')
+
+const transport = () =>import('../components/NavBar/Traffic/transport.vue')
+const Foods = () =>import('../components/NavBar/Food/Foods.vue')
+const food = () =>import('../components/NavBar/Food/food.vue')
+
 const routes = [
   {
     path: '/', redirect: '/home'
@@ -47,10 +52,18 @@ const routes = [
         redirect: '/main',
         children: [
           {path: '/main', component: main},
-          {path: '/city', component: city},
           {path: '/comment', component: comment},
-          {path: '/food', component: food},
+          {
+            path: '/descfood', component: descfood,
+            redirect: '/Foods',
+            children: [
+              {path: '/Foods', component: Foods},
+              {path: '/food', component: food}
+            ]
+          },
           {path: '/hotel', component: hotel},
+          {path: '/hoteldetails', component: hoteldetails},
+          {path: '/transport', component: transport},
           {path: '/scenic', component: scenic},
           {path: '/tour', component: tour},
           {path: '/traffic', component: traffic},

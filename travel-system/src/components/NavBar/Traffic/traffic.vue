@@ -6,7 +6,7 @@
           {{item.transp1}}<i class="el-icon-arrow-down el-icon--right"></i>
         </el-button>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item v-for="(i, index) in item.transp2" :key="index">{{i}}</el-dropdown-item>
+          <el-dropdown-item v-for="(i, index) in item.transp2" :key="index" @command="clicktra()">{{i}}</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
       <div class="question">
@@ -246,7 +246,11 @@ export default {
       ]
     }
   },
-  methods: {}
+  methods: {
+    clicktra() {
+      this.$router.push('/transport')
+    }
+  }
 }
 </script>
 <style  scoped>

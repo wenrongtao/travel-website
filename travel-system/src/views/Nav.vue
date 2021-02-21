@@ -4,10 +4,6 @@
         <el-col>
           <el-menu background-color="#545c64" text-color="#fff"
             active-text-color="#ffd04b" router>
-            <el-menu-item index="/city">
-              <i class="el-icon-location"></i>
-              <span slot="title">城市</span>
-            </el-menu-item>
             <el-menu-item index="/scenic">
               <i class="el-icon-view"></i>
               <span slot="title" >景点</span>
@@ -20,7 +16,7 @@
               <i class="el-icon-office-building"></i>
               <span slot="title">酒店</span>
             </el-menu-item>
-            <el-menu-item index="/food">
+            <el-menu-item index="/descfood">
               <i class="el-icon-position"></i>
               <span slot="title">美食</span>
             </el-menu-item>

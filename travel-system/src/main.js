@@ -3,8 +3,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './assets/css/index1.css'
-import jquery from 'jquery'
-import Moment from 'moment'
+import $ from 'jquery'
+import ajax from 'ajax'
+
+
 
 import 'lib-flexible'
 

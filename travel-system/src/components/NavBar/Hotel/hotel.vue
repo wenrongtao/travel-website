@@ -6,47 +6,17 @@
 				</a>
 			</header>
 			<main>
-				<section class="item">
-					<div class="left">推荐酒店</div>
-					<div class="right">
-						<a href="">海外酒店</a>
-						<a href="">团购</a>
-						<a href="">特惠酒店</a>
-						<a href="">客栈公寓</a>
-					</div>
-				</section>
-				<section class="item">
-					<div class="left">热门酒店</div>
-					<div class="right">
-						<a href="">海外酒店</a>
-						<a href="">团购</a>
-						<a href="">特惠酒店</a>
-						<a href="">客栈公寓</a>
-					</div>
-				</section>
-				<section class="item">
-					<div class="left">网红酒店</div>
-					<div class="right">
-						<a href="">海外酒店</a>
-						<a href="">团购</a>
-						<a href="">特惠酒店</a>
-						<a href="">客栈公寓</a>
-					</div>
-				</section>
-				<section class="item">
-					<div class="left">特高级酒店</div>
-					<div class="right">
-						<a href="">海外酒店</a>
-						<a href="">团购</a>
-						<a href="">特惠酒店</a>
-						<a href="">客栈公寓</a>
+				<section class="item" v-for="(item, index) in hotelname" :key="index">
+					<div class="left">{{item.hotel1}}</div>
+					<div class="right" v-for="(im, i) in item.hotel2" :key="i">
+						<a href="javascript: ;" @click="hotel()">{{im}}</a>
 					</div>
 				</section>
 				<section class="extra">
-					<a href="">
+					<a href="javascript: ;">
 						<img :src="hotelImg2"/>
 					</a>
-					<a href="">
+					<a href="javascript: ;">
 						<img :src="hotelImg1"/>
 					</a>
 				</section>
@@ -54,11 +24,17 @@
 			</main>
 			<footer>
 				<nav>
-					<a href="">电话预定</a>
-					<a href="">下载客户端</a>
-					<a href="">我的订单</a>
-				</nav>
-				<p class="copyright">&copy;2021 邀我旅行</p>
+					<a :href="'tel:' + 11668866">联系商家</a>
+					<a href="javascript: ;"><p class="copyright">&copy;2021 邀我旅行</p></a>
+					<el-button type="text" @click="dialogTableVisible = true">我的订单</el-button>
+				  <el-dialog title="我的订单" :visible.sync="dialogTableVisible">
+            <div class="menu">
+              <h2>枫叶酒店</h2>
+              <p>价格$129.00</p>
+            </div>
+          </el-dialog>
+        </nav>
+				
 			</footer>	
       
 		</div>
@@ -72,10 +48,33 @@ export default {
     return {
       hotelImg1: require('../../../assets/images/HotelImg/hotel1.png'),
       hotelImg2: require('../../../assets/images/HotelImg/hotel2.png'),
-      hotelImg3: require('../../../assets/images/HotelImg/hotel3.png')
+      hotelImg3: require('../../../assets/images/HotelImg/hotel3.png'),
+      dialogVisible: false,
+      hotelname: [
+        {
+          hotel1: '推荐酒店',
+          hotel2: ['海外酒店', '团购', '特惠酒店', '客栈公寓']
+        },
+        {
+          hotel1: '热门酒店',
+          hotel2: ['海外酒店', '团购', '特惠酒店', '客栈公寓']
+        },
+        {
+          hotel1: '网红酒店',
+          hotel2: ['海外酒店', '团购', '特惠酒店', '客栈公寓']
+        },
+        {
+          hotel1: '特高级酒店',
+          hotel2: ['海外酒店', '团购', '特惠酒店', '客栈公寓']
+        }
+      ]
     }
   },
-  methods: {}
+  methods: {
+    hotel() {
+      this.$router.push('/hoteldetails')
+    }
+  }
 }
 </script>
 <style  scoped>
