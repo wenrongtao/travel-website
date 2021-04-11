@@ -56,25 +56,26 @@
         </div>
       </div>
     </div>
+    <!-- echarts数据统计图 -->
     <div id='data'>
       <header>
-      <h1>购物-数据可视化分析</h1>
+      <h1>旅游行业-数据可视化分析</h1>
       <div class="showTime">{{date | formatDate}}</div>
       </header>
       <div class="mainbox">
         <div class="column">
           <div class="panel bar">
-            <h2>柱形图-就业行业</h2>
+            <h2>各行业经济分析</h2>
             <div class="chart"></div>
             <div class="panel-footer"></div>
           </div>
           <div class="panel line">
-            <h2>柱形图-就业行业<a href="javascript:;">2020</a><a href="javascript:;">2021</a></h2>
+            <h2>交通使用情况<a href="javascript:;">2020</a><a href="javascript:;">2021</a></h2>
             <div class="chart"></div>
             <div class="panel-footer"></div>
           </div>
           <div class="panel pie">
-            <h2>柱形图-就业行业</h2>
+            <h2>游客评论数量</h2>
             <div class="chart"></div>
             <div class="panel-footer"></div>
           </div>
@@ -89,8 +90,8 @@
             </div>
             <div class="no-bd">
               <ul>
-                <li>前端需求人数</li>
-                <li>市场供应人数</li>
+                <li>现全国旅游人数</li>
+                <li>未来旅游人数</li>
               </ul>
             </div>
           </div>
@@ -102,17 +103,17 @@
         </div>
         <div class="column">
           <div class="panel bar1">
-            <h2>柱形图-就业行业</h2>
+            <h2>旅游纪念品购买情况</h2>
             <div class="chart"></div>
             <div class="panel-footer"></div>
           </div>
           <div class="panel line1">
-            <h2>柱形图-就业行业</h2>
+            <h2>游客男女比例</h2>
             <div class="chart"></div>
             <div class="panel-footer"></div>
           </div>
           <div class="panel pie1">
-            <h2>柱形图-就业行业</h2>
+            <h2>旅游行业经济情况</h2>
             <div class="chart"></div>
             <div class="panel-footer"></div>
           </div>
@@ -146,39 +147,40 @@ export default {
         },
         {
           tit: '家居',
-          tit1: ['电视', '洗衣机', '空调', '冰箱', '录音机', '电饭煲', '吸尘器']
+          tit1: ['现代家具', '后现代家具', '欧式古典家具', '美式家具', '中式古典家具', '整装家具', '组合家具']
         },
         {
           tit: '服装',
-          tit1: ['电视', '洗衣机', '空调', '冰箱', '录音机', '电饭煲', '吸尘器']
+          tit1: ['休闲', '时装', '职业装', '套装', '童装', '针织衫', '吸尘器']
         },
         {
           tit: '特产',
-          tit1: ['电视', '洗衣机', '空调', '冰箱', '录音机', '电饭煲', '吸尘器']
+          tit1: ['电视', '洗衣机', '空调', '冰箱', '录音机', '电饭煲', '晚装']
         },
         {
           tit: '图书',
-          tit1: ['电视', '洗衣机', '空调', '冰箱', '录音机', '电饭煲', '吸尘器']
+          tit1: ['社会科学', '自然科学图书', '中文图书', '外文图书', '普通图书', '工具书', '小说']
         },
         {
           tit: '艺术',
-          tit1: ['电视', '洗衣机', '空调', '冰箱', '录音机', '电饭煲', '吸尘器']
+          tit1: ['造型艺术', '表演艺术', '综合艺术', '语言艺术']
         },
         {
           tit: '珠宝',
-          tit1: ['电视', '洗衣机', '空调', '冰箱', '录音机', '电饭煲', '吸尘器']
+          tit1: ['钻石', '红宝石', '祖母绿', '蓝宝石']
         },
         {
           tit: '宠物',
-          tit1: ['电视', '洗衣机', '空调', '冰箱', '录音机', '电饭煲', '吸尘器']
+          tit1: ['哺乳类', '鸟类', '爬行类', '两栖类', '鱼类']
         },
         {
           tit: '玩具',
-          tit1: ['电视', '洗衣机', '空调', '冰箱', '录音机', '电饭煲', '吸尘器']
+          tit1: ['启蒙玩具', '主题玩具', '益智玩具', '科技玩具', '音乐玩具', '健身玩具']
         },
         {
           tit: '医药',
-          tit1: ['电视', '洗衣机', '空调', '冰箱', '录音机', '电饭煲', '吸尘器']
+          tit1: ['中药材', '中药饮片', '中成药', '中西成药', '化学原料药及其制剂', '抗生素', '生化药品','放射性药品',
+          '血清','疫苗','血液制品']
         }
       ],
       shopList: [
@@ -448,7 +450,7 @@ export default {
             {
               type: 'category',
               inverse: true,
-              data: ['javaScript', 'Vue', 'node.js', 'jQuery', 'React'],
+              data: ['服装', '装饰品', '衣帽', '拍照留念', '特产'],
               axisLine: {
                 show: false
               },
@@ -528,7 +530,7 @@ export default {
               trigger: 'axis'
           },
           legend: {
-              data: ['新增粉丝', '收藏数', '转发数'],
+              data: ['火车', '飞机', '高铁'],
               textStyle: {
                 color: '#4c9bfd'
               },
@@ -577,21 +579,21 @@ export default {
           },
           series: [
               {
-                name: '新增粉丝',
+                name: '火车',
                 type: 'line',
                 stack: '总量',
                 smooth: true,
                 data: [120, 132, 101, 134, 90, 230, 210, 100, 210, 320, 120, 200]
               },
               {
-                name: '收藏数',
+                name: '飞机',
                 type: 'line',
                 stack: '总量',
                 smooth: true,
                 data: [220, 182, 191, 234, 290, 330, 100, 66, 90, 210, 10, 520]
               },
               {
-                name: '转发数',
+                name: '高铁',
                 type: 'line',
                 stack: '总量',
                 smooth: true,

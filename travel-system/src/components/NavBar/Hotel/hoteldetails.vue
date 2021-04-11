@@ -1,4 +1,11 @@
 <template>
+<div>
+  <div>
+    <a href="javascript:void() " @click="backHotel">
+      <i class="el-icon-back">返回
+      </i>
+    </a>
+  </div>
   <div class="hl">
     <div class="ht" v-for="(item, index) in hotel" :key="index">
       <el-image 
@@ -10,7 +17,8 @@
       <span>{{item.detail}}</span>
       <span class="span2">{{item.reserve}}</span>
     </div>
-  </div>
+  </div></div>
+
 </template>
 <script>
 
@@ -65,10 +73,19 @@ export default {
       ]
     }
   },
-  methods: {}
+  methods: {
+    backHotel() {
+      this.$router.push('/hotel')
+    }
+  }
 }
 </script>
 <style  scoped>
+a {
+  font-size: 16px;
+  font-weight: 700;
+  color: red;
+}
   .hl {
     display: flex;
     justify-content: space-between;

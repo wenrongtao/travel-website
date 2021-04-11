@@ -36,7 +36,7 @@ export default {
         },
         {
           mess: '出生日期',
-          mymess: '1997-2-8'
+          mymess: '1998-2-8'
         },
         {
           mess: '绑定号码',

@@ -26,13 +26,8 @@
 				<nav>
 					<a :href="'tel:' + 11668866">联系商家</a>
 					<a href="javascript: ;"><p class="copyright">&copy;2021 邀我旅行</p></a>
-					<el-button type="text" @click="dialogTableVisible = true">我的订单</el-button>
-				  <el-dialog title="我的订单" :visible.sync="dialogTableVisible">
-            <div class="menu">
-              <h2>枫叶酒店</h2>
-              <p>价格$129.00</p>
-            </div>
-          </el-dialog>
+					<el-button type="text" @click="purchaseOrder">我的订单</el-button>
+				  
         </nav>
 				
 			</footer>	
@@ -73,6 +68,9 @@ export default {
   methods: {
     hotel() {
       this.$router.push('/hoteldetails')
+    },
+    purchaseOrder() {
+      this.$router.push('/personal')
     }
   }
 }

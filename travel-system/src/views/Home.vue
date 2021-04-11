@@ -5,8 +5,8 @@
       <div style="position:relative">
         <i @click="lg"><img :src="login" class="login" >Log in</i>
         <i @click="rg"><img :src="register" class="register">Sign up</i>
-        <img :src="avatar" title="请选择" class="avatar">
-        <div class="person">
+        <img :src="avatar" title="请选择" class="avatar" @click="showPersonal">
+        <div class="person" v-if="show">
           <ul>
             <li @click="pers">Personal Center</li>
             <li @click="set">Setting</li>
@@ -34,6 +34,7 @@ export default {
   name: '',
   data () {
     return {
+      show:false,
       avatar: require('../assets/images/avatar.png'),
       login: require('../assets/images/login.png'),
       register: require('../assets/images/register.png'),
@@ -54,6 +55,12 @@ export default {
     Slide
   },
   methods: {
+    showPersonal() {
+      setTimeout(()=> {
+        this.show = !this.show
+      },200)
+      
+    },
     lg() {
       this.$router.push('/login')
     },
