@@ -130,7 +130,6 @@ export default {
           if(det) {
             return true
           }
-          
         }
       })
        this.orderList.splice(index,1)

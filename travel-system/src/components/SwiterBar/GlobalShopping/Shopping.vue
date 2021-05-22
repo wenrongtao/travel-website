@@ -24,7 +24,7 @@
         <el-tab-pane :label="item" v-for="(item, index) in hotList" :key="index">
           <div class="dl">
             <div class="detail" v-for="(item, index) in shopList" :key="index">
-              <img :src="item.img" alt="" srcset="">
+              <img :src="item.img" alt="" srcset="" style="width:90%;height: 300px">
               <p>{{item.title}}</p>
               <span class="pspan">{{item.desc}}</span>
               <div class="price">
@@ -34,6 +34,7 @@
                 </span>
                 <span class="span2">{{item.oldPrice}}</span>
               </div>
+              <el-button type="primary" plain size="small">立即下单</el-button>
             </div>
           </div>
         </el-tab-pane>
@@ -51,6 +52,7 @@
               <p class="cp4"><span class="cspan3">领劵</span><em>五元优惠劵</em></p>
               <p class="cp5"><span class="cspan4">返现</span><em>满五十立减10</em></p>
               <p class="cp6">{{item.des}}</p>
+              <el-button type="primary" plain size="small">立即下单</el-button>
             </div>
           </div>
         </div>
@@ -192,81 +194,81 @@ export default {
           oldPrice: '￥2290.0'
         },
         {
-          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          img: require('../../../assets/images/shopImg/southeast.jpg'),
           title: 'the best choice',
-          desc: '这将是你不错的选择',
-          newPrice: '￥1680.0',
-          oldPrice: '￥2290.0'
+          desc: '走时准确，防震性能好',
+          newPrice: '￥680.0',
+          oldPrice: '￥1990.0'
         },
         {
-          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          img: require('../../../assets/images/shopImg/cloth1.jpg'),
           title: 'the best choice',
-          desc: '这将是你不错的选择',
-          newPrice: '￥1680.0',
-          oldPrice: '￥2290.0'
+          desc: '颜色淡雅,裙幅褶褶',
+          newPrice: '￥280.0',
+          oldPrice: '￥398.0'
         },
         {
-          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          img: require('../../../assets/images/shopImg/cloth2.jpg'),
           title: 'the best choice',
-          desc: '这将是你不错的选择',
-          newPrice: '￥1680.0',
-          oldPrice: '￥2290.0'
+          desc: '手中的幸福梦想',
+          newPrice: '￥6680.0',
+          oldPrice: '￥8290.0'
         },
         {
-          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          img: require('../../../assets/images/shopImg/necklace.png'),
           title: 'the best choice',
-          desc: '这将是你不错的选择',
-          newPrice: '￥1680.0',
-          oldPrice: '￥2290.0'
+          desc: '在阳光的照耀下闪闪发光',
+          newPrice: '￥1280.0',
+          oldPrice: '￥2899.0'
         },
         {
-          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          img: require('../../../assets/images/shopImg/lipstick.jpg'),
           title: 'the best choice',
-          desc: '这将是你不错的选择',
-          newPrice: '￥1680.0',
-          oldPrice: '￥2290.0'
+          desc: '彩妆很透明,很有魅力',
+          newPrice: '￥170.0',
+          oldPrice: '￥135.0'
         },
         {
-          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          img: require('../../../assets/images/shopImg/bracelet.jpg'),
           title: 'the best choice',
-          desc: '这将是你不错的选择',
-          newPrice: '￥1680.0',
-          oldPrice: '￥2290.0'
+          desc: '种质细腻通透，颜色鲜阳纯正',
+          newPrice: '￥6680.0',
+          oldPrice: '￥9926.0'
         },
         {
-          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          img: require('../../../assets/images/shopImg/eyeShadow.png'),
           title: 'the best choice',
-          desc: '这将是你不错的选择',
-          newPrice: '￥1680.0',
-          oldPrice: '￥2290.0'
+          desc: '放大双眼，光芒四射',
+          newPrice: '￥280.0',
+          oldPrice: '￥390.0'
         },
         {
-          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          img: require('../../../assets/images/shopImg/highHeeled.jpg'),
           title: 'the best choice',
-          desc: '这将是你不错的选择',
-          newPrice: '￥1680.0',
-          oldPrice: '￥2290.0'
+          desc: '体现女性的美',
+          newPrice: '￥589.0',
+          oldPrice: '￥790.0'
         },
         {
-          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          img: require('../../../assets/images/shopImg/cheongsam.png'),
           title: 'the best choice',
-          desc: '这将是你不错的选择',
-          newPrice: '￥1680.0',
-          oldPrice: '￥2290.0'
+          desc: '中国女性最美的服装',
+          newPrice: '￥880.0',
+          oldPrice: '￥1290.0'
         },
         {
-          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          img: require('../../../assets/images/shopImg/sunglasses.png'),
           title: 'the best choice',
-          desc: '这将是你不错的选择',
-          newPrice: '￥1680.0',
-          oldPrice: '￥2290.0'
+          desc: '墨镜可挡紫外线和红外线',
+          newPrice: '￥1280.0',
+          oldPrice: '￥2230.0'
         },
         {
-          img: require('../../../assets/images/shopImg/cloth.jpg'),
+          img: require('../../../assets/images/shopImg/skirt.jpeg'),
           title: 'the best choice',
           desc: '这将是你不错的选择',
-          newPrice: '￥1680.0',
-          oldPrice: '￥2290.0'
+          newPrice: '￥120.0',
+          oldPrice: '￥269.0'
         }
       ],
       contentList: [
@@ -278,72 +280,72 @@ export default {
           des: '销售榜第五名'
         },
         {
-          img: require('../../../assets/images/shopImg/jewelry.jpg'),
+          img: require('../../../assets/images/shopImg/decImg1.jpg'),
           title: '女生简约闺蜜、情侣',
           sp: '关注立减五元',
-          price: '￥158.0',
+          price: '￥19.0',
           des: '销售榜第五名'
         },
         {
-          img: require('../../../assets/images/shopImg/jewelry.jpg'),
+          img: require('../../../assets/images/shopImg/decImg2.jpg'),
           title: '女生简约闺蜜、情侣',
           sp: '关注立减五元',
-          price: '￥158.0',
+          price: '￥199.0',
           des: '销售榜第五名'
         },
         {
-          img: require('../../../assets/images/shopImg/jewelry.jpg'),
+          img: require('../../../assets/images/shopImg/decImg3.jpg'),
           title: '女生简约闺蜜、情侣',
           sp: '关注立减五元',
-          price: '￥158.0',
+          price: '￥1158.0',
           des: '销售榜第五名'
         },
         {
-          img: require('../../../assets/images/shopImg/jewelry.jpg'),
+          img: require('../../../assets/images/shopImg/decImg4.jpg'),
           title: '女生简约闺蜜、情侣',
           sp: '关注立减五元',
-          price: '￥158.0',
+          price: '￥228.0',
           des: '销售榜第五名'
         },
         {
-          img: require('../../../assets/images/shopImg/jewelry.jpg'),
+          img: require('../../../assets/images/shopImg/decImg5.jpg'),
           title: '女生简约闺蜜、情侣',
           sp: '关注立减五元',
-          price: '￥158.0',
+          price: '￥1558.0',
           des: '销售榜第五名'
         },
         {
-          img: require('../../../assets/images/shopImg/jewelry.jpg'),
+          img: require('../../../assets/images/shopImg/decImg6.jpg'),
           title: '女生简约闺蜜、情侣',
           sp: '关注立减五元',
-          price: '￥158.0',
+          price: '￥358.0',
           des: '销售榜第五名'
         },
         {
-          img: require('../../../assets/images/shopImg/jewelry.jpg'),
+          img: require('../../../assets/images/shopImg/decImg7.jpg'),
           title: '女生简约闺蜜、情侣',
           sp: '关注立减五元',
-          price: '￥158.0',
+          price: '￥167.0',
           des: '销售榜第五名'
         },
         {
-          img: require('../../../assets/images/shopImg/jewelry.jpg'),
+          img: require('../../../assets/images/shopImg/decImg8.jpg'),
           title: '女生简约闺蜜、情侣',
           sp: '关注立减五元',
-          price: '￥158.0',
+          price: '￥198.0',
           des: '销售榜第五名'
         }
       ]
     }
   },
   mounted() {
-    this.drawLine1()
-    this.drawLine2()
-    this.drawLine3()
-    this.drawLine4()
-    this.drawLine5()
-    this.drawLine6()
-    this.drawLine7()
+      this.drawLine1();
+      this.drawLine2();
+      this.drawLine3();
+      this.drawLine4();
+      this.drawLine5();
+      this.drawLine6();
+      this.drawLine7();
   },
   filters: {
     formatDate() {
@@ -751,7 +753,7 @@ export default {
       };
       myChart4.setOption(option4)
       window.addEventListener('resize', function () {
-        myChart4.resize()
+      myChart4.resize()
       })
     },
     drawLine5() {
@@ -1250,7 +1252,7 @@ export default {
   }
   .place .merchant {
     width: 400px;
-    height: 200px;
+    height: 210px;
     background-color: white;
     margin-top: 50px;
     padding: 5px 5px;
@@ -1258,7 +1260,7 @@ export default {
   .place .merchant img {
     float: left;
     width: 220px;
-    height: 200px;
+    height: 213px;
   }
   .place .merchant .content {
     padding: 10px 8px;

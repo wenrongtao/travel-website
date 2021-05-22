@@ -1,167 +1,50 @@
 <template>
   <div class="remark">
     <ul>
-      <li>
-        <img :src="img">
-        <span class="name">大头</span>
-        <div class="rate">
-          <span>对我们的网站还满意吗？</span>
-        <el-rate
-          v-model="value"
-          text-color="#ff9900"
-          :colors="colors"
-          show-text>
-        </el-rate>
-        </div>
-        <div class="fayan">
-          <span class="left" @click="dialogVisible = true">
-关于旅游我百度了一下,“旅”是旅行，外出，即为了实现某一目的而在空间上从甲地到乙地的行进过程；“游”是外出游览、观光、娱乐，即为达到这些目的所作的旅行。二者合起来即旅游。所以，旅行偏重于行，旅游不但有“行”，且有观光、娱乐含义。
-          </span>
-          <span class="right">
-            <span>2021-12-2</span>
-            <span><i class="el-icon-view"></i>浏览量</span>
-            <span><i class="el-icon-star-off"></i>点赞数</span>
-            <span class="spanchan"><i class="el-icon-chat-dot-round"></i>评论</span>
-          </span>
-        </div>
-      </li>
-      <el-dialog
-        :visible.sync="dialogVisible"
-        width="30%"
-        :before-close="handleClose">
-        <span>这是一段信息</span>
-      </el-dialog>
-      <li>
-        <img :src="img">
-        <span class="name">大头</span>
-        <div class="rate">
-          <span>对我们的网站还满意吗？</span>
-        <el-rate
-          v-model="value"
-          text-color="#ff9900"
-          :colors="colors"
-          show-text>
-        </el-rate>
-        </div>
-        <div class="fayan">
-          <span class="left" @click="dialogVisible = true">“浅谈我对旅游的认识 旅游是个人利用其自由时间并以寻求愉悦为目的而在异地获得的一种短暂的休闲体验。 旅游是一种经济活动 所谓经济是指在一定的社会组织与秩序之下,人类为了求生存而经由劳动过程或支付适当代价以取得及利用各种生活资料的一切活动。简言之,经济活动是以满足人的需求为目的。
-          </span>
-          <span class="right">
-            <span>2021-12-2</span>
-            <span><i class="el-icon-view"></i>浏览量</span>
-            <span><i class="el-icon-star-off"></i>点赞数</span>
-            <span class="spanchan"><i class="el-icon-chat-dot-round"></i>评论</span>
-          </span>
-        </div>
-      </li>
-      <li>
-        <img :src="img">
-        <span class="name">大头</span>
-        <div class="rate">
-          <span>对我们的网站还满意吗？</span>
-        <el-rate
-          v-model="value"
-          text-color="#ff9900"
-          :colors="colors"
-          show-text>
-        </el-rate>
-        </div>
-        <div class="fayan">
-          <span class="left" @click="dialogVisible = true">APP是我用过最好的，体验感贼棒，大赞
-            该网站非常的靠谱，里面的东西优惠并且有质量保证，有什么问题，客服都能耐心答复、完全能够帮你解决
-            所有的疑问，并且给你很多好的建议和见解。
-          </span>
-          <span class="right">
-            <span>2021-12-2</span>
-            <span><i class="el-icon-view"></i>浏览量</span>
-            <span><i class="el-icon-star-off"></i>点赞数</span>
-            <span class="spanchan"><i class="el-icon-chat-dot-round"></i>评论</span>
-          </span>
-        </div>
-      </li>
-      <li>
-        <img :src="img">
-        <span class="name">大头</span>
-        <div class="rate">
-          <span>对我们的网站还满意吗？</span>
-        <el-rate
-          v-model="value"
-          text-color="#ff9900"
-          :colors="colors"
-          show-text>
-        </el-rate>
-        </div>
-        <div class="fayan">
-          <span class="left" @click="dialogVisible = true">“浅谈我对旅游的认识 旅游是个人利用其自由时间并以寻求愉悦为目的而在异地获得的一种短暂的休闲体验。 旅游是一种经济活动 所谓经济是指在一定的社会组织与秩序之下,人类为了求生存而经由劳动过程或支付适当代价以取得及利用各种生活资料的一切活动。简言之,经济活动是以满足人的需求为目的。
-          </span>
-          <span class="right">
-            <span>2021-12-2</span>
-            <span><i class="el-icon-view"></i>浏览量</span>
-            <span><i class="el-icon-star-off"></i>点赞数</span>
-            <span class="spanchan"><i class="el-icon-chat-dot-round"></i>评论</span>
-          </span>
-        </div>
-      </li>
-      
-      <li>
-        <img :src="img">
-        <span class="name">大头</span>
-        <div class="rate">
-          <span>对我们的网站还满意吗？</span>
-        <el-rate
-          v-model="value"
-          text-color="#ff9900"
-          :colors="colors"
-          show-text>
-        </el-rate>
-        </div>
-        <div class="fayan">
-          <span class="left" @click="dialogVisible = true">
-            西江千户苗寨是全世界最大的苗寨。被中外人类学家和民俗学者认为是保存苗族“原始生态”文化比较完整的地方。西江苗族的历史非常悠久，可以追溯到公元前559年的蚩尤部落。据说西江苗族是蚩尤第三个儿子的后裔。
-          </span>
-          <span class="right">
-            <span>2021-12-2</span>
-            <span><i class="el-icon-view"></i>浏览量</span>
-            <span><i class="el-icon-star-off"></i>点赞数</span>
-            <span class="spanchan"><i class="el-icon-chat-dot-round"></i>评论</span>
-          </span>
-        </div>
-      </li>
-      <li>
-        <img :src="img">
-        <span class="name">大头</span>
-        <div class="rate">
-          <span>对我们的网站还满意吗？</span>
-        <el-rate
-          v-model="value"
-          text-color="#ff9900"
-          :colors="colors"
-          show-text>
-        </el-rate>
-        </div>
-        <div class="fayan">
-          <span class="left" @click="dialogVisible = true">APP是我用过最好的，体验感贼棒，大赞
-            111111111111111111111111
-            111111111111111111111111
-            111111111111111111111
-            11111111111111111111
-            11111111111111111111
-            11111111111111111111
-          </span>
-          <span class="right">
-            <span>2021-12-2</span>
-            <span><i class="el-icon-view"></i>浏览量</span>
-            <span><i class="el-icon-star-off"></i>点赞数</span>
-            <span class="spanchan"><i class="el-icon-chat-dot-round"></i>评论</span>
-          </span>
-        </div>
-      </li>
-      <el-dialog
-        :visible.sync="dialogVisible"
-        width="30%"
-        :before-close="handleClose">
-        <span>这是一段信息</span>
-      </el-dialog>
+      <li v-for="(item, index) in commentContent" :key="index">
+          <img :src="item.img">
+          <span class="name">{{item.name}}</span>
+          <div class="rate">
+            <span>{{item.question}}</span>
+          <el-rate
+            v-model="value"
+            text-color="#ff9900"
+            :colors="colors"
+            show-text>
+          </el-rate>
+          </div>
+          <div class="fayan">
+            <span class="left">
+              {{item.content}}
+            </span>
+            
+            <span class="right">
+              <span>2021-12-2</span>
+              <span><i class="el-icon-view"></i>浏览量&nbsp;997386</span>
+              <span @click="like()">
+                <el-badge :value="62" class="item">
+                  <i class="el-icon-star-off"></i>点赞数
+                </el-badge></span>
+              <span class="spanchan" @click="dialogVisible = true"><i class="el-icon-chat-dot-round"></i>评论</span>
+              <el-dialog
+                title="回复Ta的评论"
+                :visible.sync="dialogVisible"
+                width="40%">
+                <el-input
+                  type="textarea"
+                  :rows="4"
+                  placeholder="请输入内容"
+                  v-model="textarea">
+                </el-input>
+                <span slot="footer" class="dialog-footer">
+                  <el-button @click="dialogVisible = false">取 消</el-button>
+                  <el-button type="primary" @click="reply()">回复</el-button>
+                </span>
+              </el-dialog>
+            </span>
+          </div>
+          <p>回复Ta:{{replyContent}}</p>
+        </li>
     </ul>
   </div>
 </template>
@@ -174,11 +57,40 @@ export default {
     return {
       img: require('../../../assets/images/ListImg/jouney1.jpg'),
       dialogVisible: false,
+      replyContent: '',
       value: null,
-      colors: ['#99A9BF', '#F7BA2A', '#FF9900']
+      textarea: '',
+      colors: ['#99A9BF', '#F7BA2A', '#FF9900'],
+      commentContent: [
+        {
+          img: require('../../../assets/images/ListImg/jouney1.jpg'),
+          name:'大头',
+          question: '对我们的服务还满意吗？',
+          content: 'test的处境玩不玩对本文还不到位的郭跃文高段位了电弧额外观独一无二的文化设备到货党工委移动业务大比武一个大约为。'
+        },
+        {
+          img: require('../../../assets/images/ListImg/profilePhoto.jpg'),
+          name:'南方有树名乔木',
+          question: '旅游者是最幸福的人儿',
+          content: 'test的处境玩不玩对本文还不到位的郭跃文高段位了电弧额外观独一无二的文化设备到货党工委移动业务大比武一个大约为。'
+        },
+        {
+          img: require('../../../assets/images/ListImg/dog.jpeg'),
+          name:'在山的那边',
+          question: '西藏是一个治愈心灵的净土',
+          content: 'test的处境玩不玩对本文还不到位的郭跃文高段位了电弧额外观独一无二的文化设备到货党工委移动业务大比武一个大约为。'
+        }
+      ]
     }
   },
-  methods: {}
+  methods: {
+    reply() {
+      this.dialogVisible = false;
+      if (this.textarea.lenght != 0) {
+        this.replyContent = this.textarea;
+      }
+    }
+  }
 }
 </script>
 <style  scoped>

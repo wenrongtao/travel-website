@@ -5,21 +5,21 @@
         <el-input
           type="textarea"
           placeholder="请输入内容"
-          v-model="textarea"
+          v-model="textarea1"
           maxlength="120"
           :rows="8"
           show-word-limit>
         </el-input>
-        <el-button type="danger" icon="el-icon-delete">清空内容</el-button>
-        <el-button type="success" icon="el-icon-check">发布评论</el-button>
+        <el-button type="danger" icon="el-icon-delete" @click="del()">清空内容</el-button>
+        <el-button type="success" icon="el-icon-check" @click="issue()">发布评论</el-button>
       </div>
       <h1>评论区</h1>
       <ul>
-        <li>
-          <img :src="img">
-          <span class="name">大头</span>
+        <li v-for="(item, index) in commentContent" :key="index">
+          <img :src="item.img">
+          <span class="name">{{item.name}}</span>
           <div class="rate">
-            <span>对我们的网站还满意吗？</span>
+            <span>{{item.question}}</span>
           <el-rate
             v-model="value"
             text-color="#ff9900"
@@ -28,133 +28,38 @@
           </el-rate>
           </div>
           <div class="fayan">
-            <span class="left" @click="dialogVisible = true">APP是我用过最好的，体验感贼棒，大赞
-              111111111111111111111111
-              111111111111111111111111
-              111111111111111111111
-              11111111111111111111
-              11111111111111111111
-              11111111111111111111
+            <span class="left">
+              {{item.content}}
             </span>
+            
             <span class="right">
               <span>2021-12-2</span>
-              <span><i class="el-icon-view"></i>浏览量</span>
-              <span><i class="el-icon-star-off"></i>点赞数</span>
-              <span class="spanchan"><i class="el-icon-chat-dot-round"></i>评论</span>
+              <span><i class="el-icon-view"></i>浏览量&nbsp;997386</span>
+              <span @click="like()">
+                <el-badge :value="62" class="item">
+                  <i class="el-icon-star-off" :style="{color: love}"></i>点赞数
+                </el-badge></span>
+              <span class="spanchan" @click="dialogVisible = true"><i class="el-icon-chat-dot-round"></i>评论</span>
+              <el-dialog
+                title="回复Ta的评论"
+                :visible.sync="dialogVisible"
+                width="40%"
+                :before-close="handleClose">
+                <el-input
+                  type="textarea"
+                  :rows="4"
+                  placeholder="请输入内容"
+                  v-model="textarea">
+                </el-input>
+                <span slot="footer" class="dialog-footer">
+                  <el-button @click="dialogVisible = false">取 消</el-button>
+                  <el-button type="primary" @click="reply()">回复</el-button>
+                </span>
+              </el-dialog>
             </span>
           </div>
+          <p>回复Ta:{{replyContent}}</p>
         </li>
-        <el-dialog
-          :visible.sync="dialogVisible"
-          width="30%"
-          :before-close="handleClose">
-          <span>这是一段信息</span>
-        </el-dialog>
-        <li>
-          <img :src="img">
-          <span class="name">大头</span>
-          <div class="rate">
-            <span>对我们的网站还满意吗？</span>
-          <el-rate
-            v-model="value"
-            text-color="#ff9900"
-            :colors="colors"
-            show-text>
-          </el-rate>
-          </div>
-          <div class="fayan">
-            <span class="left" @click="dialogVisible = true">APP是我用过最好的，体验感贼棒，大赞
-              111111111111111111111111
-              111111111111111111111111
-              111111111111111111111
-              11111111111111111111
-              11111111111111111111
-              11111111111111111111
-            </span>
-            <span class="right">
-              <span>2021-12-2</span>
-              <span><i class="el-icon-view"></i>浏览量</span>
-              <span><i class="el-icon-star-off"></i>点赞数</span>
-              <span class="spanchan"><i class="el-icon-chat-dot-round"></i>评论</span>
-            </span>
-          </div>
-        </li>
-        <el-dialog
-          :visible.sync="dialogVisible"
-          width="30%"
-          :before-close="handleClose">
-          <span>这是一段信息</span>
-        </el-dialog>
-        <li>
-          <img :src="img">
-          <span class="name">大头</span>
-          <div class="rate">
-            <span>对我们的网站还满意吗？</span>
-          <el-rate
-            v-model="value"
-            text-color="#ff9900"
-            :colors="colors"
-            show-text>
-          </el-rate>
-          </div>
-          <div class="fayan">
-            <span class="left" @click="dialogVisible = true">APP是我用过最好的，体验感贼棒，大赞
-              111111111111111111111111
-              111111111111111111111111
-              111111111111111111111
-              11111111111111111111
-              11111111111111111111
-              11111111111111111111
-            </span>
-            <span class="right">
-              <span>2021-12-2</span>
-              <span><i class="el-icon-view"></i>浏览量</span>
-              <span><i class="el-icon-star-off"></i>点赞数</span>
-              <span class="spanchan"><i class="el-icon-chat-dot-round"></i>评论</span>
-            </span>
-          </div>
-        </li>
-        <el-dialog
-          :visible.sync="dialogVisible"
-          width="30%"
-          :before-close="handleClose">
-          <span>这是一段信息</span>
-        </el-dialog>
-        <li>
-          <img :src="img">
-          <span class="name">大头</span>
-          <div class="rate">
-            <span>对我们的网站还满意吗？</span>
-          <el-rate
-            v-model="value"
-            text-color="#ff9900"
-            :colors="colors"
-            show-text>
-          </el-rate>
-          </div>
-          <div class="fayan">
-            <span class="left" @click="dialogVisible = true">APP是我用过最好的，体验感贼棒，大赞
-              111111111111111111111111
-              111111111111111111111111
-              111111111111111111111
-              11111111111111111111
-              11111111111111111111
-              11111111111111111111
-            </span>
-            <span class="right">
-              <span>2021-12-2</span>
-              <span><i class="el-icon-view"></i>浏览量</span>
-              <span><i class="el-icon-star-off"></i>点赞数</span>
-              <span class="spanchan"><i class="el-icon-chat-dot-round"></i>评论</span>
-            </span>
-          </div>
-        </li>
-        <el-dialog
-          :visible.sync="dialogVisible"
-          width="30%"
-          :before-close="handleClose">
-          <span>这是一段信息</span>
-        </el-dialog>
       </ul>
     </div>
   </div>
@@ -166,13 +71,65 @@ export default {
   name: '',
   data () {
     return {
-      img: require('../../../assets/images/ListImg/jouney1.jpg'),
-      dialogVisible: false,
+      commentContent: [
+        {
+          img: require('../../../assets/images/ListImg/jouney1.jpg'),
+          name:'大头',
+          question: '对我们的服务还满意吗？',
+          content: 'test的处境玩不玩对本文还不到位的郭跃文高段位了电弧额外观独一无二的文化设备到货党工委移动业务大比武一个大约为。'
+        },
+        {
+          img: require('../../../assets/images/ListImg/profilePhoto.jpg'),
+          name:'南方有树名乔木',
+          question: '旅游者是最幸福的人儿',
+          content: 'test的处境玩不玩对本文还不到位的郭跃文高段位了电弧额外观独一无二的文化设备到货党工委移动业务大比武一个大约为。'
+        },
+        {
+          img: require('../../../assets/images/ListImg/dog.jpeg'),
+          name:'在山的那边',
+          question: '西藏是一个治愈心灵的净土',
+          content: 'test的处境玩不玩对本文还不到位的郭跃文高段位了电弧额外观独一无二的文化设备到货党工委移动业务大比武一个大约为。'
+        }
+      ],
       value: null,
-      colors: ['#99A9BF', '#F7BA2A', '#FF9900']
+      colors: ['#99A9BF', '#F7BA2A', '#FF9900'],
+      dialogVisible: false,
+      textarea1: '',
+      textarea: '',
+      replyContent: '',
+      value: 0
     }
   },
-  methods: {}
+  mounted() {
+    this.commentMsg()
+  },
+  methods: {
+    issue() {
+      if ( this.textarea1.length != 0) {
+        let reg = /嘛的|废物|垃圾|有病/g;
+        if (this.textarea1.indexOf(reg) != -1) {
+          this.textarea1.replace(reg, '*')
+        }
+        this.commentContent.unshift({img: 'xxxx',name: 'xxxx', question: 'xxxxx',content: this.textarea1})
+      }
+    },
+    del() {
+      this.textarea1 = ''
+    },
+    reply() {
+      this.dialogVisible = false;
+      if (this.textarea.lenght != 0) {
+        this.replyContent = this.textarea;
+      }
+    },
+    like() {
+      // this.value++
+    },
+    async commentMsg() {
+      const {data: res} = await this.$http.post('https://aip.baidubce.com/rpc/2.0/nlp/v2/comment_tag?charset=UTF-8&access_token=test')
+      console.log('1111', res)
+    }
+  }
 }
 </script>
 <style  scoped>
@@ -253,5 +210,8 @@ export default {
   }
   .rate span {
     color: #8B8B7A;
+  }
+  .dialog-footer > .el-button {
+    margin-top: -10px;
   }
 </style>

@@ -29,6 +29,7 @@ const process = () =>import('../components/SwiterBar/GiftCard/GiftUser/ProcessPu
 const question = () =>import('../components/SwiterBar/GiftCard/GiftUser/Question.vue')
 const service = () =>import('../components/SwiterBar/GiftCard/GiftUser/ServiceRgulations.vue')
 const tutorial = () =>import('../components/SwiterBar/GiftCard/GiftUser/Tutorial.vue')
+const Informations =() =>import('../components/SwiterBar/CityInfo/informations.vue')
 
 const setting = () =>import('../views/Setting.vue')
 const personal = () =>import('../views/Personal.vue')
@@ -38,10 +39,12 @@ const hoteldetails = () =>import('../components/NavBar/Hotel/hoteldetails.vue')
 const transport = () =>import('../components/NavBar/Traffic/transport.vue')
 const Foods = () =>import('../components/NavBar/Food/Foods.vue')
 const food = () =>import('../components/NavBar/Food/food.vue')
+const Menu = () =>import('../components/NavBar/Food/menu.vue')
+const foodSearch = () =>import('../components/NavBar/Food/foodSearch.vue')
 
 const routes = [
   {
-    path: '/', redirect: '/home'
+    path: '/', redirect: '/login'
   },
   {
     path: '/home', component: home,
@@ -58,9 +61,11 @@ const routes = [
             redirect: '/Foods',
             children: [
               {path: '/Foods', component: Foods},
-              {path: '/food', component: food}
+              {path: '/food', component: food},
+              {path: '/foodSearch', component: foodSearch}
             ]
           },
+          {path:'/menu', component: Menu},
           {path: '/hotel', component: hotel},
           {path: '/hoteldetails', component: hoteldetails},
           {path: '/transport', component: transport},
@@ -70,6 +75,7 @@ const routes = [
           {path: '/weather', component: weather}
         ]
       },
+      {path:'/informations', component: Informations},
       {
         path: '/strategynotes', component: strategynotes
       },
@@ -126,5 +132,16 @@ const router = new VueRouter({
   routes,
   mode: 'history'
 })
-
+router.beforeEach((to, from, next) => {
+  if (to.path === '/login') {
+    next();
+  } else {
+    let token = localStorage.getItem('token');
+    if (token === 'null' || token === '') {
+      next('/login');
+    } else {
+      next();
+    }
+  }
+});
 export default router

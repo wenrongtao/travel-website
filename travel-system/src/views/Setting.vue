@@ -2,9 +2,37 @@
   <div class="set">
     <p>编辑资料</p>
     <ul>
-      <li>头像<span><a href="javascript:;"><img :src="avaimg" alt="" srcset=""></a>></span></li>
+      <li>头像<span @click="dialogFormVisible = true"><a href="javascript:;"><img :src="avaimg" alt="" srcset=""></a>></span></li>
+      <el-dialog title="上传头像" :visible.sync="dialogFormVisible" width="400px">
+        <el-form :model="formAvator">
+          <el-form-item label="请选择要上传的头像" prop="pass">
+            <el-input type="file" v-model="ruleForm.avator" autocomplete="off"></el-input>
+          </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="dialogFormVisible = false">取 消</el-button>
+          <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+        </div>
+      </el-dialog>
+    
       <li v-for="(item, index) in list" :key="index">{{item.mess}}<span><a href="javascript:;" @click="change()">{{item.mymess}}</a>></span></li>
-      
+      <el-dialog title="编辑资料" :visible.sync="dialogContentVisible" width="500px">
+        <el-form :model="formContent">
+          <el-form-item label="修改昵称" prop="pass">
+            <el-input
+              type="textarea"
+              :rows="2"
+              placeholder="请输入内容"
+              v-model="textarea">
+            </el-input>
+          </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="dialogContentVisible = false">取 消</el-button>
+          <el-button type="primary" @click="dialogContentVisible = false">确 定</el-button>
+        </div>
+      </el-dialog>
+
       <el-button
         plain
         @click="open1">
@@ -24,7 +52,7 @@ export default {
       list: [
         {
           mess: '昵称',
-          mymess: '码农桃子'
+          mymess: 'admin'
         },
         {
           mess: '性别', 
@@ -46,7 +74,16 @@ export default {
           mess: '个性签名',
           mymess: '风雨过后定是彩虹！！'
         }
-      ]
+      ],
+      dialogFormVisible: false,
+      dialogContentVisible: false,
+      formAvator: {},
+      formContent: {},
+      formLabelWidth: '400px',
+      ruleForm: {
+        avator: ''
+      },
+      textarea: ''
     }
   },
   methods: {
@@ -59,7 +96,7 @@ export default {
         this.$router.push('/main')
       },
       change() {
-        alert('input')
+        this.dialogContentVisible = true
       }
   }
 }

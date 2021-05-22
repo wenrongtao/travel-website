@@ -27,32 +27,32 @@ export default {
           bt: '立即下单'
         },
         {
-          img: require('../../../assets/images/FoodImg/food/food1.jpg'),
-          trade: '小桃子餐饮',
+          img: require('../../../assets/images/FoodImg/food/foodImg1.jpg'),
+          trade: '小李子餐饮',
           title: '可口、美味、让您回味无穷。。',
           bt: '立即下单'
         },
         {
-          img: require('../../../assets/images/FoodImg/food/food1.jpg'),
-          trade: '小桃子餐饮',
+          img: require('../../../assets/images/FoodImg/food/foodImg2.jpg'),
+          trade: '好兄弟餐饮',
           title: '可口、美味、让您回味无穷。。',
           bt: '立即下单'
         },
         {
-          img: require('../../../assets/images/FoodImg/food/food1.jpg'),
-          trade: '小桃子餐饮',
+          img: require('../../../assets/images/FoodImg/food/foodImg3.jpg'),
+          trade: '姐妹餐饮',
           title: '可口、美味、让您回味无穷。。',
           bt: '立即下单'
         },
         {
-          img: require('../../../assets/images/FoodImg/food/food1.jpg'),
-          trade: '小桃子餐饮',
+          img: require('../../../assets/images/FoodImg/food/foodImg4.jpg'),
+          trade: '好吃再来餐饮',
           title: '可口、美味、让您回味无穷。。',
           bt: '立即下单'
         },
         {
-          img: require('../../../assets/images/FoodImg/food/food1.jpg'),
-          trade: '小桃子餐饮',
+          img: require('../../../assets/images/FoodImg/food/foodImg5.jpg'),
+          trade: '没你不行餐饮',
           title: '可口、美味、让您回味无穷。。',
           bt: '立即下单'
         }

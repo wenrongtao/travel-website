@@ -6,17 +6,17 @@
         <img :src="imgLg" alt="">
       </div>
       <!-- 登录表单区域 -->
-      <el-form  class="login_form" >
-        <el-form-item  prop="username">
-          <el-input prefix-icon="el-icon-user-solid" placeholder="请输入用户名"></el-input>
+      <el-form  class="login_form" :model="ruleForm" ref="ruleForm" :rules="rules">
+        <el-form-item  prop="user">
+          <el-input prefix-icon="el-icon-user-solid" placeholder="请输入用户名" v-model="ruleForm.user"></el-input>
         </el-form-item>
-        <el-form-item prop="password">
+        <el-form-item prop="pass">
           <!-- 在element-ui组件库中，输入框可以使用type进行修改 -->
-          <el-input prefix-icon="el-icon-unlock"  type='password' placeholder="请输入密码"></el-input>
+          <el-input prefix-icon="el-icon-unlock"  type='pass' placeholder="请输入密码" v-model="ruleForm.pass" @keyup.enter="submitForm('ruleForm')"></el-input>
         </el-form-item >
         <el-form-item class="btns" >
-          <el-button type="primary" round>登录</el-button>
-          <el-button type="success" round>重置</el-button>
+          <el-button type="primary" round @click="submitForm('ruleForm')">登录</el-button>
+          <el-button type="success" round @click="resetForm('ruleForm')">重置</el-button>
         </el-form-item>
         <el-form-item>
           <p>其它登录方式</p>
@@ -25,6 +25,14 @@
         </el-form-item>
       </el-form>
     </div>
+    <el-dialog 
+      title="提示"
+      :visible.sync="dialogVisible"
+      width="30%"
+      :before-close="handleClose">
+      <span ref="span1">{{counter}}秒后自动跳转到主页面</span>
+    </el-dialog>
+    <!-- <div v-show="show" ref="span1" class="tols">{{counter}}秒后自动跳转到主页面</div> -->
   </div>
 </template>
 <script>
@@ -32,13 +40,112 @@
   export default {
     name: '',
     data () {
+      var checkUsername = (rule, value, callback) => {
+        if (!value) {
+          return callback(new Error('用户名不能为空'));
+        }
+        setTimeout(() => {
+            callback();
+        }, 1000);
+      };
+      var validatePass = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请输入密码'));
+        } else {
+          if (this.ruleForm.checkPass !== '') {
+            this.$refs.ruleForm.validateField('checkPass');
+          }
+          callback();
+        }
+      };
       return {
         imgLg: require('../assets/images/travel1.jpg'),
         imgqq: require('../assets/images/ListImg/qq.png'),
-        imgwei: require('../assets/images/ListImg/weixin.png')
+        imgwei: require('../assets/images/ListImg/weixin.png'),
+        ruleForm: {
+          user: '',
+          pass: ''
+        },
+        dialogVisible: false,
+        counter: 3,
+        rules: {
+          user: [
+            { validator: checkUsername, trigger: 'blur' },
+            {min: 4, max: 8, message: '长度在4到8个字符', trigger: 'blur'}
+          ],
+          pass: [
+            { validator: validatePass, trigger: 'blur' },
+            {min: 6, max: 12, message: '长度在6到12个字符', trigger: 'blur'}
+          ]
+        }
       }
     },
     methods: {
+      submitForm(formName) {
+
+        // var login={'username':this.ruleForm.user,'password':this.ruleForm.pass};
+        //   var dataJson=window.localStorage.getItem('list');
+        //   var success=null;
+        //   dataJson=eval('(' + dataJson + ')');
+        //   for (var i=0;i<dataJson.length;i++) {
+        //       if (dataJson[i].username==login.username&&dataJson[i].password==login.password) {
+        //           this.dialogVisible = true
+        //           setInterval(()=> {
+        //             this.counter--
+        //             this.$refs.span1 = this.counter 
+        //             if(this.counter == 0) {
+        //               this.$router.push('/home')
+        //             }
+        //           }, 1000)
+        //           success=1;
+        //       }
+        //   }
+        //   if (success==null) {
+        //       alert('用户名或密码错误');
+        //   }
+
+
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            this.dialogVisible = true
+            // loginCheck(this.form).then(res=>{
+            //   console.log(res);
+              // 登录成功,提示成功信息，然后跳转到首页，同时将token保存到localstorage中, 将登录名使用vuex传递到Home页面
+              // if(res.meta.status === 200){
+              //   // 提示成功信息
+              //   this.$message({
+              //       message: res.meta.msg,
+              //       type: 'success'
+              //   });
+                var that = this;
+                // 跳转到首页
+                setInterval(() => {
+                  this.counter--
+                  this.$refs.span1 = this.counter 
+                  if(that.counter == 0) {
+                    that.$router.push('/home')
+                  }
+                },1000)
+                localStorage.setItem('user_name',this.ruleForm.user)
+                localStorage.setItem('user_pass',this.ruleForm.pass)
+                // 将登录名使用vuex传递到Home页面
+                this.$store.commit('handleUserName',this.ruleForm.user, this.ruleForm.pass);
+              // }else{
+              //   // 登录失败，就提示错误信息
+              //   this.$message({
+              //       message: '登录失败,'+res.meta.msg,
+              //       type: 'error'
+              //   });
+              // }
+            // })
+          } else {
+            return false;
+          }
+        });
+      },
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
+      }
     }
   }
 </script>

@@ -9,7 +9,7 @@
         </el-image>
         <p>{{item.title}}</p>
         <span>{{item.msg}}</span>
-        <a href="">>>了解我们</a>
+        <a href="javascript:void()">>>了解我们</a>
       </div>
     </div>
   </div>

@@ -20,13 +20,31 @@
             <div class="footer">
               <span class="spanchan"><img :src="avatarimg" class="avatarimg">Jack</span>
               <span><i class="el-icon-view"></i>浏览量</span>
-              <span><i class="el-icon-star-off"></i>点赞数</span>
-              <span class="spanchan"><i class="el-icon-chat-dot-round"></i>评论</span>
+              <span><el-badge :value="16" class="item">
+                  <i class="el-icon-star-off" :style="{color: love}"></i>点赞数
+                </el-badge></span>
+              <span class="spanchan" @click="dialogVisible = true"><i class="el-icon-chat-dot-round"></i>评论</span>
+              <el-dialog
+                title="回复Ta的评论"
+                :visible.sync="dialogVisible"
+                width="50%"
+                :before-close="handleClose">
+                <el-input
+                  type="textarea"
+                  :rows="4"
+                  placeholder="请输入内容"
+                  v-model="textarea">
+                </el-input>
+                <span slot="footer" class="dialog-footer">
+                  <el-button @click="dialogVisible = false">取 消</el-button>
+                  <el-button type="primary" @click="reply()">回复</el-button>
+                </span>
+              </el-dialog>
             </div>
           </div>
         </div>
         <div class="left">
-          <img :src="avimg" class="avimg">
+          <img src="../../../assets/images/TourImg/strImg2.jpg" class="avimg">
           <div class="right">
             <h2>多彩贵州</h2>
             <p class="pnotes">我刚从贵州旅游回来，那边景色天气都很好，非常舒适。
@@ -44,16 +62,11 @@
           </div>
         </div>
         <div class="left">
-          <img :src="avimg" class="avimg">
+          <img src="../../../assets/images/TourImg/strImg1.png" class="avimg">
           <div class="right">
-            <h2>西安-大唐不夜城</h2>
-            <p class="pnotes">大唐不夜城位于陕西省西安市雁塔区的大雁塔脚下，
-              北起大雁塔南广场，南至唐城墙遗址，东起慈恩东路，西至慈恩西路，
-              街区南北长2100米，东西宽500米，总建筑面积65万平方米 大唐不夜城以
-              盛唐文化为背景，以唐风元素为主线，建有大雁塔北广场、玄奘广场、
-              贞观广场、创领新时代广场四大广场，西安音乐厅、陕西大剧院、西安美术馆、
-              曲江太平洋电影城等四大文化场馆，大唐佛文化、大唐群英谱、贞观之治、
-              武后行从、开元盛世等五大文化雕塑，是西安唐文化展示和体验的首选之地。
+            <h2>上海-迪士尼</h2>
+            <p class="pnotes">上海迪士尼乐园，是中国内地首座迪士尼主题乐园，位于上海市浦东新区川沙新镇，于2016年6月16日正式开园。它是中国大陆第一个、亚洲第三个，世界第六个迪士尼主题公园。
+乐园拥有七大主题园区：米奇大街、奇想花园、探险岛、宝藏湾、明日世界、梦幻世界、玩具总动园；两座主题酒店：上海迪士尼乐园酒店、玩具总动员酒店；一座地铁站：迪士尼站；并有许多全球首发游乐项目。。
             </p>
             <div class="footer">
               <span class="spanchan"><img :src="avatarimg" class="avatarimg">Jack</span>
@@ -740,26 +753,18 @@
       <div>
         <p class="p2">没有什么可以阻挡想去看望世界的心！！</p>
         <el-button type="text" @click="dialogTableVisible = true">查看TA的旅行故事></el-button>
-        <el-dialog title="李小龙--武术宗师、演员、导演" :visible.sync="dialogTableVisible">
-          <p class="desciption">李小龙（1940年11月27日—1973年7月20日），原名李振藩，师承叶问，出生于美国加州旧金山，
-            祖籍中国广东顺德均安镇。他是世界武道变革先驱者、武术技击家、武术哲学家、UFC开创者、
-            MMA之父、武术宗师、功夫片的开创者和截拳道创始人、华人武打电影演员，
-            中国功夫首位全球推广者、好莱坞华人演员。1962年李小龙开办“振藩国术馆”，
-            1967年自创截拳道，1973年7月20日，李小龙在香港逝世，享年33岁。
-            1979年美国洛杉矶市政府将补拍版《死亡游戏》的开映日6月8日定为“李小龙日”（7月8日为错误翻译）。
-            1993年美国发行李小龙逝世20周年纪念钞票，好莱坞大道铺上李小龙纪念星徽；同年，
-            获香港电影金像奖大会颁发“终身成就奖”。1998年11月，获中国武术协会颁发“武术电影巨星奖”。
-            1973年7月20日突然在香港逝世，享年33岁。
+        <el-dialog title="徐霞客--明代地理学家、旅行家、文学家" :visible.sync="dialogTableVisible">
+          <p class="desciption">徐霞客（1587年1月5日－1641年3月8日），名弘祖，字振之，号霞客，南直隶江阴县 [1]  （今江苏省江阴市）人，明代地理学家、旅行家和文学家，他经30年考察撰成了60万字地理名著《徐霞客游记》，被称为“千古奇人”。 [2-3] 
+徐霞客一生志在四方，足迹遍及今21个省、市、自治区 [4]  ，“达人所之未达，探人所之未知”，所到之处，探幽寻秘，并记有游记，记录观察到的各种现象、人文、地理、动植物等状况。
+《徐霞客游记》开篇之日（5月19日）被定为中国旅游日
           </p>
           <ul>
-            <li>国籍：美国（美籍华人）</li>
+            <li>本名：徐弘祖</li>
+            <li>出生地：南直隶江阴县（今江苏省江阴市）</li>
             <li>民族：汉族</li>
-            <li>职业：截拳道宗师，武学家，演员，导演，编剧</li>
-            <li>身高：173cm</li>
-            <li>星座：射手座</li>
-            <li>血型：O</li>
-            <li>影视作品：《猛龙过江》、《龙争虎斗》、《精武门》</li>
-            <li>影视成就：“台湾金马奖最佳技艺”、“香港电影金像奖终身成就奖”、“英国传媒协会传奇大奖”</li>
+            <li>出生日期：1587年1月5日-1641年3月8日</li>
+            <li>所处时代：明朝</li>
+            <li>主要作品：《徐霞客游记》</li>
           </ul>
         </el-dialog>
       </div>
@@ -933,6 +938,7 @@ export default {
   name: '',
   data () {
     return {
+      dialogVisible: false,
       mainImg: require('.././../../assets/images/mainImg.png'),
       avimg: require('../../../assets/images/travel4.jpg'),
       avatarimg: require('../../../assets/images/travel8.jpg'),
@@ -946,7 +952,12 @@ export default {
     }
   },
   methods: {
-    
+    reply() {
+      this.dialogVisible = false;
+      if (this.textarea.lenght != 0) {
+        this.replyContent = this.textarea;
+      }
+    }
   }
 }
 </script>
@@ -1003,6 +1014,14 @@ export default {
   h2:hover, .pnotes:hover, span:hover {
    color: DarkOrange;
   }
+  .pnotes {
+    height: 80px;
+    text-overflow:ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
   .footer .avatarimg {
     width: 50px;
     height: 50px;
@@ -1045,6 +1064,9 @@ export default {
   } 
   .el-dialog ul li:hover {
     color:darkorange
+  }
+  .dialog-footer {
+    margin-top: -25px;
   }
 </style>
 

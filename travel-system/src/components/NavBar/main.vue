@@ -9,6 +9,7 @@
             <div class="bottom clearfix">
               <time class="time">好吃、好玩、自由、快乐</time>
               <el-button type="text" class="button" @click='openDetail(index)'>查看详情</el-button>
+              <el-button type="primary" plain  size="small" style="margin-top: 20px;" @click="changeMenu()">立即下单</el-button>
             </div>
           </div>
         </el-card>
@@ -25,13 +26,12 @@
         人称龙虾虎。体呈粗圆筒状，背腹稍平扁，头胸甲发达，坚厚多棘，前缘中央有一对强大的眼上棘，
         具封闭的鳃室。主要分布于热带海域，是名贵海产品。中国已发现8种，以中国龙虾产量较大。
         根据营养专家黎黍匀分析，龙虾的预防疾病指数、生命力指数均低。</span>
-      <span slot="footer" class="dialog-footer">
-      </span>
+      <span slot="footer" class="dialog-footer"> </span>
     </el-dialog>
     <el-pagination
       background
       layout="prev, pager, next"
-      :total="1000">
+      :total="100">
     </el-pagination>
   </div>
 </template>
@@ -98,6 +98,9 @@ export default {
   methods: {
     openDetail(id) {
       this.dialogVisible = true
+    },
+    changeMenu() {
+      this.$router.push('/menu')
     }
   }
 }
@@ -105,7 +108,7 @@ export default {
 <style  scoped>
   .el-card {
     width: 300px;
-    height: 300px;
+    height: 330px;
     margin-top: 15px;
   }
   .time {
@@ -117,7 +120,6 @@ export default {
     margin-top: 13px;
     line-height: 12px;
   }
-
   .button {
     padding: 0;
     float: right;

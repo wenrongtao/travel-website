@@ -17,23 +17,23 @@
       </div>
       <div class="tel">
         <div class="tel1">
-          <h3>应该联系谁比较合适？？</h3>
+          <h3>现在去武功山，天气反常吗？？</h3>
           <span><i class="el-icon-question">标准答案</i></span><span>12987访问量</span>
-          <p>要看什么样的情况联系选择什么样的方式</p>
+          <p>具体查询那里的天气预报，做好一切准备；保暖措施要做好，因为到山顶会特别的冷，还需要花钱买帐篷在山上过夜。</p>
         </div>
       </div>
       <div class="tel">
         <div class="tel1">
-          <h3>应该联系谁比较合适？？</h3>
-          <span><i class="el-icon-question">标准答案</i></span><span>12987访问量</span>
-          <p>要看什么样的情况联系选择什么样的方式</p>
+          <h3>毕业计划去旅游，不知道哪里比较好玩，开销又低的地方？？</h3>
+          <span><i class="el-icon-question">标准答案</i></span><span>987访问量</span>
+          <p>看你现在居住的位置，选择离你较近的地方，那么就不用考虑车费的问题</p>
         </div>
       </div>
       <div class="tel">
         <div class="tel1">
-          <h3>应该选择谁比较合适？？</h3>
-          <span><i class="el-icon-question">标准答案</i></span><span>12987访问量</span>
-          <p>要看什么样的情况联系选择什么样的方式</p>
+          <h3>跟团旅游到底坑不坑？？</h3>
+          <span><i class="el-icon-question">标准答案</i></span><span>132214访问量</span>
+          <p>跟团游不坑，你出的钱给你挖的坑。旅行是有成本的。和成本越成反比坑越大</p>
         </div>
       </div>
       <div class="vid">
@@ -48,27 +48,27 @@
           </div>
           <div class="video1">
             <video :src="video" controls="controls" autoplay="autoplay" poster="../../../assets/images/contactImg/music.jpg"></video>
-            <p class="tit1">网站的介绍</p>
+            <p class="tit1">精彩的旅游宣传vlog</p>
+            <p class="tit2">为什么要旅游？</p>
+          </div>
+          <div class="video1">
+            <video :src="video" controls="controls" autoplay="autoplay" poster="../../../assets/images/contactImg/music.jpg"></video>
+            <p class="tit1">没钱怎么去旅游</p>
             <p class="tit2">是什么？干什么？</p>
           </div>
           <div class="video1">
             <video :src="video" controls="controls" autoplay="autoplay" poster="../../../assets/images/contactImg/music.jpg"></video>
-            <p class="tit1">网站的介绍</p>
+            <p class="tit1">网站的评论区发布不了帖子</p>
             <p class="tit2">是什么？干什么？</p>
           </div>
           <div class="video1">
             <video :src="video" controls="controls" autoplay="autoplay" poster="../../../assets/images/contactImg/music.jpg"></video>
-            <p class="tit1">网站的介绍</p>
+            <p class="tit1">天气查询在哪里，找不到</p>
             <p class="tit2">是什么？干什么？</p>
           </div>
           <div class="video1">
             <video :src="video" controls="controls" autoplay="autoplay" poster="../../../assets/images/contactImg/music.jpg"></video>
-            <p class="tit1">网站的介绍</p>
-            <p class="tit2">是什么？干什么？</p>
-          </div>
-          <div class="video1">
-            <video :src="video" controls="controls" autoplay="autoplay" poster="../../../assets/images/contactImg/music.jpg"></video>
-            <p class="tit1">网站的介绍</p>
+            <p class="tit1">车票啥时候才会有优惠的活动</p>
             <p class="tit2">是什么？干什么？</p>
           </div>
         </div>

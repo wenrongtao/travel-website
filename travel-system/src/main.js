@@ -3,8 +3,15 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './assets/css/index1.css'
-import $ from 'jquery'
-import ajax from 'ajax'
+
+import axios from 'axios'
+axios.defaults.baseURL ='/admin'
+//每次发送axios，就会有token缓存
+axios.interceptors.request.use(config => {
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  return config
+})
+Vue.prototype.$http = axios
 
 
 

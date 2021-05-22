@@ -5,7 +5,8 @@
       <div style="position:relative">
         <i @click="lg"><img :src="login" class="login" >Log in</i>
         <i @click="rg"><img :src="register" class="register">Sign up</i>
-        <img :src="avatar" title="请选择" class="avatar" @click="showPersonal">
+        <img :src="avatar" title="欢迎您!" class="avatar" @click="showPersonal">
+        <strong class="userNames">欢迎您，{{userName}}</strong>
         <div class="person" v-if="show">
           <ul>
             <li @click="pers">Personal Center</li>
@@ -29,12 +30,14 @@
 </template>
 <script>
 import Slide from '../views/Slide'
+import { mapGetters } from 'vuex'
 
 export default {
   name: '',
   data () {
     return {
       show:false,
+      title: '',
       avatar: require('../assets/images/avatar.png'),
       login: require('../assets/images/login.png'),
       register: require('../assets/images/register.png'),
@@ -59,7 +62,6 @@ export default {
       setTimeout(()=> {
         this.show = !this.show
       },200)
-      
     },
     lg() {
       this.$router.push('/login')
@@ -70,6 +72,7 @@ export default {
     quit() {
       var cf = confirm('您确定要退出吗？？')
       if (cf) {
+        window.sessionStorage.clear()
         window.opener = null; 
         window.open('', '_self'); 
         window.close()
@@ -81,6 +84,9 @@ export default {
     set() {
       this.$router.push('/setting')
     }
+  },
+  computed: {
+    ...mapGetters(['userName'])
   }
 }
 </script>
@@ -175,5 +181,12 @@ export default {
     color: darkorange;
     background-color: #6495ED;
     cursor: pointer;
+  }
+  .userNames {
+    position: absolute;
+    left: -180px;
+    top: 20px;
+    font-style: italic;
+    font-size: 24px;
   }
 </style>

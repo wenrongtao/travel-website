@@ -11,6 +11,7 @@
           @select="handleSelect"
         >
         </el-autocomplete>
+        <el-button type="primary" icon="el-icon-search" @click="querySearch">搜索</el-button>
         <div class="list">
           <div class="list1" v-for="(item, index) in list" :key="index" @click="clickfood()">
             <img :src="item.img" alt="">
@@ -19,11 +20,9 @@
         </div>
         <router-view></router-view>
     </div>
-
   </div>
 </template>
 <script>
-
 
 export default {
   name: '',
@@ -64,19 +63,15 @@ export default {
           img: require('../../../assets/images/FoodImg/vegetables.png'),
           title: "蔬菜"
         }
-      ]
+      ],
+      showMain: true
     }
   },
   methods: {
-     querySearch(queryString, cb) {
-        var restaurants = this.restaurants;
-        var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
-        cb(results);
-      },
-      createFilter(queryString) {
-        return (restaurant) => {
-          return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
-        };
+     querySearch() {
+       if (this.state2 !== '') {
+         this.$router.push('/foodSearch')
+       }
       },
       clickfood() {
         this.$router.push('/food')
@@ -92,8 +87,8 @@ export default {
       background-color: #fff;
     }
     .inline-input {
-      width: 50%;
-      margin: 5px 0 0 5px;
+      width: 30%;
+      margin: 5px 2px 0 5px;
     }
     .list {
       margin: 20px;
